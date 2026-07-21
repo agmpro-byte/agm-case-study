@@ -356,7 +356,7 @@
     <div class="container">
         <div class="hero-badge">AGM Pro Tools &mdash; Case Study</div>
         <h1>The Report Their Software Couldn't Run</h1>
-        <p>A Central Valley pest control operator asked how this year compares to last year. The answer didn't exist &mdash; so we built the system that makes sure it always will.</p>
+        <p>A Central Valley pest control operator asked how this year compares to last year. The answer didn't exist &mdash; so we built the system that makes sure it always&nbsp;will.</p>
         <div class="hero-stats">
             <div class="hero-stat">
                 <div class="number">0 days</div>
@@ -382,8 +382,8 @@
 
 <section>
     <h2>The Client</h2>
-    <p>A pest control operator in California's Central Valley: roughly 2,500 active customers, a recurring book north of $2M annually, and their entire operation &mdash; routing, scheduling, billing &mdash; running on one of the industry's leading practice management platforms. The platform is genuinely good at that job, and nothing in this case study changes that.</p>
-    <p>AGM Pro Tools runs their operations intelligence layer: a dashboard built on a three-times-daily sync that turns raw operational data into prioritized queues &mdash; who to collect from, who's about to churn, where the cross-sell whitespace is.</p>
+    <p>A pest control operator in California's Central Valley: roughly 2,500 active customers, a recurring book north of $2M annually, and their entire operation &mdash; routing, scheduling, billing &mdash; running on one of the industry's leading practice management platforms. The platform is genuinely good at that job, and nothing in this case study changes&nbsp;that.</p>
+    <p>AGM Pro Tools runs their operations intelligence layer: a dashboard built on a three-times-daily sync that turns raw operational data into prioritized queues &mdash; who to collect from, who's about to churn, where the cross-sell whitespace&nbsp;is.</p>
 </section>
 
 <section>
@@ -392,8 +392,8 @@
     <div class="card highlight">
         <p style="font-size: 20px; font-style: italic; margin: 0;">"Can you show me how these numbers compare to last year?"</p>
     </div>
-    <p>Every owner assumes that answer lives in their software somewhere. It's their business. Their numbers. Surely the system that processes every invoice and every route knows what the business looked like last June.</p>
-    <p>It doesn't. And discovering exactly <em>why</em> it doesn't turned into the most important finding of the engagement.</p>
+    <p>Every owner assumes that answer lives in their software somewhere. It's their business. Their numbers. Surely the system that processes every invoice and every route knows what the business looked like last&nbsp;June.</p>
+    <p>It doesn't. And discovering exactly <em>why</em> it doesn't turned into the most important finding of the&nbsp;engagement.</p>
 </section>
 
 <section>
@@ -402,57 +402,57 @@
     <h3>Operational platforms store today. They do not store history.</h3>
     <div class="card">
         <ul style="color: var(--text-light); padding-left: 20px;">
-            <li style="margin-bottom: 10px;"><strong>Autopay enrollment</strong> &mdash; overwritten in place. What it was last month is gone.</li>
-            <li style="margin-bottom: 10px;"><strong>Account balances and aging</strong> &mdash; current values only. Yesterday's balance no longer exists anywhere.</li>
-            <li style="margin-bottom: 10px;"><strong>Customer status</strong> &mdash; more than 4,000 of the operator's ~6,900 inactive records carried no date for when the customer actually left.</li>
+            <li style="margin-bottom: 10px;"><strong>Autopay enrollment</strong> &mdash; overwritten in place. What it was last month is&nbsp;gone.</li>
+            <li style="margin-bottom: 10px;"><strong>Account balances and aging</strong> &mdash; current values only. Yesterday's balance no longer exists&nbsp;anywhere.</li>
+            <li style="margin-bottom: 10px;"><strong>Customer status</strong> &mdash; more than 4,000 of the operator's ~6,900 inactive records carried no date for when the customer actually&nbsp;left.</li>
         </ul>
     </div>
-    <p>The platform's job is to answer "what needs to happen today?" &mdash; and it answers brilliantly. But that means "what was my MRR last June?" isn't hidden or hard to reach. It is <strong>nonexistent</strong>. No report, no export, no API call can produce a number the system never wrote down.</p>
-    <p>Every month that passes without someone recording the trend line is a month of business history erased &mdash; permanently.</p>
+    <p>The platform's job is to answer "what needs to happen today?" &mdash; and it answers brilliantly. But that means "what was my MRR last June?" isn't hidden or hard to reach. It is <strong>nonexistent</strong>. No report, no export, no API call can produce a number the system never wrote&nbsp;down.</p>
+    <p>Every month that passes without someone recording the trend line is a month of business history erased &mdash;&nbsp;permanently.</p>
 </section>
 
 <section>
     <h2>The 90-Day Reconstruction</h2>
-    <p>One partial exception: recent cancellation records still held their dates. That meant the last 90 days could be rebuilt &mdash; carefully &mdash; from raw account and subscription data.</p>
-    <p>We validated the method the honest way: we reconstructed <em>today's</em> numbers using only the raw records, then compared them against the live computed KPIs. <strong>They matched to the penny.</strong> Same formulas, same classification rules, provably correct.</p>
-    <p>That let us ship month-over-month deltas to the operator's scoreboard the same day the question was asked &mdash; every core metric now carrying a plus-or-minus against 30 days prior, color-coded by whether the movement is good news or bad. Recurring revenue: up. Active customers: down a few. Cancellation rate: a hair above the same window last month. Real answers, same day.</p>
-    <p>But 90 days was the hard ceiling. Reconstruction could buy a month of hindsight. It could never buy a year.</p>
+    <p>One partial exception: recent cancellation records still held their dates. That meant the last 90 days could be rebuilt &mdash; carefully &mdash; from raw account and subscription&nbsp;data.</p>
+    <p>We validated the method the honest way: we reconstructed <em>today's</em> numbers using only the raw records, then compared them against the live computed KPIs. <strong>They matched to the penny.</strong> Same formulas, same classification rules, provably&nbsp;correct.</p>
+    <p>That let us ship month-over-month deltas to the operator's scoreboard the same day the question was asked &mdash; every core metric now carrying a plus-or-minus against 30 days prior, color-coded by whether the movement is good news or bad. Recurring revenue: up. Active customers: down a few. Cancellation rate: a hair above the same window last month. Real answers, same&nbsp;day.</p>
+    <p>But 90 days was the hard ceiling. Reconstruction could buy a month of hindsight. It could never buy a&nbsp;year.</p>
 </section>
 
 <section>
     <h2>What We Built</h2>
     <p>So we changed what our platform does with the data it already syncs. Once per day, the sync now banks a permanent point-in-time record of the business &mdash; nine core numbers, written down and never overwritten:</p>
     <div class="card">
-        <p style="margin: 0;">Monthly recurring revenue &middot; annualized book &middot; active customers &middot; active service plans &middot; net new plans &middot; cancellation rate &middot; autopay coverage &middot; route density &middot; completion rate</p>
+        <p style="margin: 0;">Monthly recurring revenue &middot; annualized book &middot; active customers &middot; active service plans &middot; net new plans &middot; cancellation rate &middot; autopay coverage &middot; route density &middot; completion&nbsp;rate</p>
     </div>
     <h3>The part that matters most: it's structural, not manual</h3>
-    <p>The history capture lives inside the sync engine itself &mdash; not in a dashboard, not in a scheduled report someone has to maintain. Nobody triggers it. Nobody remembers it. And every new client we onboard inherits it automatically from their very first sync: the longitudinal record starts on day one, with zero extra setup.</p>
-    <p>Thirty days in, every metric gets an honest month-over-month comparison from stored truth instead of reconstruction. A year in, true year-over-year &mdash; the exact question that started all this &mdash; answers itself. Forever.</p>
+    <p>The history capture lives inside the sync engine itself &mdash; not in a dashboard, not in a scheduled report someone has to maintain. Nobody triggers it. Nobody remembers it. And every new client we onboard inherits it automatically from their very first sync: the longitudinal record starts on day one, with zero extra&nbsp;setup.</p>
+    <p>Thirty days in, every metric gets an honest month-over-month comparison from stored truth instead of reconstruction. A year in, true year-over-year &mdash; the exact question that started all this &mdash; answers itself.&nbsp;Forever.</p>
 </section>
 
 <section>
     <h2>Why It Compounds</h2>
-    <p>Here is the part worth sitting with: <strong>this data cannot be backfilled.</strong> If the record starts in July, it starts in July &mdash; there is no catching up, no buying the missing months, no engineering that recovers a number nobody wrote down.</p>
-    <p>For the operator, that record becomes an asset that grows in value every single day it runs: real seasonality curves, early warning when autopay coverage starts slipping, the difference between "this summer feels better" and "this summer is 6% better." For an owner who ever sells the business, it's the operational history a buyer's diligence team wishes every target had.</p>
-    <p>Trend intelligence isn't a report you run. It's a discipline something has to be doing every single day &mdash; and now, something is.</p>
+    <p>Here is the part worth sitting with: <strong>this data cannot be backfilled.</strong> If the record starts in July, it starts in July &mdash; there is no catching up, no buying the missing months, no engineering that recovers a number nobody wrote&nbsp;down.</p>
+    <p>For the operator, that record becomes an asset that grows in value every single day it runs: real seasonality curves, early warning when autopay coverage starts slipping, the difference between "this summer feels better" and "this summer is 6% better." For an owner who ever sells the business, it's the operational history a buyer's diligence team wishes every target&nbsp;had.</p>
+    <p>Trend intelligence isn't a report you run. It's a discipline something has to be doing every single day &mdash; and now, something&nbsp;is.</p>
 </section>
 
 <section>
     <h2>Results</h2>
     <div class="card green-highlight">
         <ul style="color: var(--text-light); padding-left: 20px;">
-            <li style="margin-bottom: 10px;"><strong>Same-day answer:</strong> month-over-month deltas on every scoreboard metric, shipped the day the owner asked &mdash; validated against live data to the penny.</li>
-            <li style="margin-bottom: 10px;"><strong>Permanent fix:</strong> a daily nine-metric longitudinal record, banked automatically by the sync engine, monitored so a single missed day surfaces the same morning.</li>
-            <li style="margin-bottom: 10px;"><strong>Every future client covered:</strong> history capture is part of onboarding itself &mdash; day one of any new engagement is day one of that operator's permanent record.</li>
-            <li style="margin-bottom: 10px;"><strong>No platform switch, no disruption:</strong> the operator's routing software stays exactly where it is, doing exactly what it does well.</li>
+            <li style="margin-bottom: 10px;"><strong>Same-day answer:</strong> month-over-month deltas on every scoreboard metric, shipped the day the owner asked &mdash; validated against live data to the&nbsp;penny.</li>
+            <li style="margin-bottom: 10px;"><strong>Permanent fix:</strong> a daily nine-metric longitudinal record, banked automatically by the sync engine, monitored so a single missed day surfaces the same&nbsp;morning.</li>
+            <li style="margin-bottom: 10px;"><strong>Every future client covered:</strong> history capture is part of onboarding itself &mdash; day one of any new engagement is day one of that operator's permanent&nbsp;record.</li>
+            <li style="margin-bottom: 10px;"><strong>No platform switch, no disruption:</strong> the operator's routing software stays exactly where it is, doing exactly what it does&nbsp;well.</li>
         </ul>
     </div>
 </section>
 
 <section style="text-align: center; background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%); border-radius: 12px; padding: 50px 30px; margin: 40px 0; border-top: none;">
     <h2 style="color: white;">Could Your Software Answer the Question?</h2>
-    <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">If you wanted to compare this month to the same month last year &mdash; real numbers, not memory &mdash; could you? For most field service operators the honest answer is no, and the meter is running. AGM Pro Tools puts the recording layer alongside the software you already run.</p>
-    <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We remember what they forget.</p>
+    <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">If you wanted to compare this month to the same month last year &mdash; real numbers, not memory &mdash; could you? For most field service operators the honest answer is no, and the meter is running. AGM Pro Tools puts the recording layer alongside the software you already&nbsp;run.</p>
+    <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We remember what they&nbsp;forget.</p>
     <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; margin-top: 24px; padding: 14px 32px; background: #5abd28; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Book a Free Strategy Call</a>
 </section>
 
@@ -461,9 +461,9 @@
 <!-- FOOTER -->
 <div class="footer">
     <div class="container">
-        <p>AGM Pro Tools &mdash; Enterprise Integration for Field Service</p>
+        <p>AGM Pro Tools &mdash; Enterprise Integration for Field&nbsp;Service</p>
         <p style="margin-top: 8px;"><a href="https://agmprotools.com" style="color: rgba(255,255,255,0.6);">agmprotools.com</a></p>
-        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on live integration engineering &mdash; July 2026 &middot; Client anonymized</p>
+        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on live integration engineering &mdash; July 2026 &middot; Client&nbsp;anonymized</p>
     </div>
 </div>
 

@@ -356,7 +356,7 @@
     <div class="container">
         <div class="hero-badge">AGM Pro Tools &mdash; Case Study</div>
         <h1>8,373 Customers. Zero Automation. Half Without Email.</h1>
-        <p>Valley Pest Control &mdash; FieldRoutes (PestRoutes) Integration &amp; Data Discovery</p>
+        <p>Valley Pest Control &mdash; FieldRoutes (PestRoutes) Integration &amp; Data&nbsp;Discovery</p>
         <div class="hero-stats">
             <div class="hero-stat">
                 <div class="number">8,373</div>
@@ -382,8 +382,8 @@
 <section>
     <div class="container">
         <h2>The Client</h2>
-        <p><strong>Valley Pest Control</strong> is an established pest control company running on <strong>FieldRoutes</strong> (formerly PestRoutes, now owned by ServiceTitan). They manage thousands of recurring pest control subscriptions &mdash; quarterly treatments, one-time exterminations, termite inspections &mdash; all tracked in FieldRoutes. Their customer base had grown over years of solid service work, but their technology stack had never grown with it.</p>
-        <p>When we connected to their FieldRoutes instance, we expected the usual gaps. What we found was far more significant.</p>
+        <p><strong>Valley Pest Control</strong> is an established pest control company running on <strong>FieldRoutes</strong> (formerly PestRoutes, now owned by ServiceTitan). They manage thousands of recurring pest control subscriptions &mdash; quarterly treatments, one-time exterminations, termite inspections &mdash; all tracked in FieldRoutes. Their customer base had grown over years of solid service work, but their technology stack had never grown with&nbsp;it.</p>
+        <p>When we connected to their FieldRoutes instance, we expected the usual gaps. What we found was far more&nbsp;significant.</p>
         <div class="metrics">
             <div class="metric">
                 <div class="value">8,373</div>
@@ -409,31 +409,31 @@
 <section>
     <div class="container">
         <h2>The Discovery</h2>
-        <p>AGM Pro Tools connected to Valley Pest's FieldRoutes API and ran a comprehensive data audit across their entire customer base. The audit revealed five critical gaps &mdash; not bugs, not misconfigurations, but <em>structural blind spots</em> that had been invisibly costing the business for years.</p>
+        <p>AGM Pro Tools connected to Valley Pest's FieldRoutes API and ran a comprehensive data audit across their entire customer base. The audit revealed five critical gaps &mdash; not bugs, not misconfigurations, but <em>structural blind spots</em> that had been invisibly costing the business for&nbsp;years.</p>
 
         <div class="card highlight">
             <h3>Finding #1: 49% of Customers Have No Email Address</h3>
-            <p>Of 8,373 customers, <strong>4,103 have no email on file</strong>. Only a phone number. This isn't a data quality issue &mdash; it's structural to pest control. Customers call about a scorpion in the kitchen, schedule service over the phone, and never provide an email. Any communication strategy built on email-first engagement misses half the customer base entirely.</p>
+            <p>Of 8,373 customers, <strong>4,103 have no email on file</strong>. Only a phone number. This isn't a data quality issue &mdash; it's structural to pest control. Customers call about a scorpion in the kitchen, schedule service over the phone, and never provide an email. Any communication strategy built on email-first engagement misses half the customer base&nbsp;entirely.</p>
         </div>
 
         <div class="card highlight">
             <h3>Finding #2: Zero Lead Source Attribution</h3>
-            <p>The lead source field is <strong>blank across every single record</strong>. 8,373 customers and zero visibility into which marketing channels drive business. Referrals? Google Ads? Yelp? Door hangers? Nobody knows. Every dollar spent on marketing is a guess &mdash; and every dollar earned is unattributed.</p>
+            <p>The lead source field is <strong>blank across every single record</strong>. 8,373 customers and zero visibility into which marketing channels drive business. Referrals? Google Ads? Yelp? Door hangers? Nobody knows. Every dollar spent on marketing is a guess &mdash; and every dollar earned is&nbsp;unattributed.</p>
         </div>
 
         <div class="card highlight">
             <h3>Finding #3: Zero Automated Communication</h3>
-            <p>No marketing emails. No SMS sequences. No review requests after service. No welcome messages for new customers. No win-back campaigns for cancellations. No appointment reminders. <strong>8,373 customers and not a single automated touchpoint.</strong> Every communication is manual or nonexistent.</p>
+            <p>No marketing emails. No SMS sequences. No review requests after service. No welcome messages for new customers. No win-back campaigns for cancellations. No appointment reminders. <strong>8,373 customers and not a single automated touchpoint.</strong> Every communication is manual or&nbsp;nonexistent.</p>
         </div>
 
         <div class="card highlight">
             <h3>Finding #4: FieldRoutes Has No Webhooks</h3>
-            <p>Unlike Jobber or Housecall Pro, FieldRoutes provides <strong>no webhook support whatsoever</strong>. There is no way for the platform to push events in real-time. The only option is polling &mdash; checking for changes at regular intervals. This is the single biggest architectural constraint in the integration, and it's invisible to anyone who hasn't built against the API.</p>
+            <p>Unlike Jobber or Housecall Pro, FieldRoutes provides <strong>no webhook support whatsoever</strong>. There is no way for the platform to push events in real-time. The only option is polling &mdash; checking for changes at regular intervals. This is the single biggest architectural constraint in the integration, and it's invisible to anyone who hasn't built against the&nbsp;API.</p>
         </div>
 
         <div class="card highlight">
             <h3>Finding #5: Frozen vs. Cancelled Ambiguity</h3>
-            <p>FieldRoutes has two subscription end-states: <strong>Frozen</strong> (temporarily paused) and <strong>Cancelled</strong> (permanently ended). Each requires a completely different communication strategy &mdash; a frozen customer needs a "welcome back" nudge, a cancelled customer needs a win-back campaign. But the distinction isn't obvious in the data without careful mapping.</p>
+            <p>FieldRoutes has two subscription end-states: <strong>Frozen</strong> (temporarily paused) and <strong>Cancelled</strong> (permanently ended). Each requires a completely different communication strategy &mdash; a frozen customer needs a "welcome back" nudge, a cancelled customer needs a win-back campaign. But the distinction isn't obvious in the data without careful&nbsp;mapping.</p>
         </div>
     </div>
 </section>
@@ -442,7 +442,7 @@
 <section>
     <div class="container">
         <h2>The Platform Analysis</h2>
-        <p>Before building anything, AGM Pro Tools conducted a deep assessment of the FieldRoutes API to understand exactly what's possible and what isn't. This analysis shapes every architectural decision downstream.</p>
+        <p>Before building anything, AGM Pro Tools conducted a deep assessment of the FieldRoutes API to understand exactly what's possible and what isn't. This analysis shapes every architectural decision&nbsp;downstream.</p>
 
         <table>
             <tr><th>Capability</th><th>FieldRoutes Status</th><th>Impact</th></tr>
@@ -468,7 +468,7 @@
         <h2>What We Built</h2>
 
         <h3>1. Polling-Based Sync Engine</h3>
-        <p>Since FieldRoutes has no webhooks, we built a lightweight polling service that checks for changes every 5 minutes. For pest control workflows &mdash; review requests after service, cancellation win-backs, welcome sequences &mdash; a 5-minute delay is invisible to the customer and indistinguishable from real-time.</p>
+        <p>Since FieldRoutes has no webhooks, we built a lightweight polling service that checks for changes every 5 minutes. For pest control workflows &mdash; review requests after service, cancellation win-backs, welcome sequences &mdash; a 5-minute delay is invisible to the customer and indistinguishable from&nbsp;real-time.</p>
 
         <div class="card">
             <h3>Architecture: FieldRoutes &rarr; CRM Sync</h3>
@@ -486,7 +486,7 @@
         </div>
 
         <h3>2. Subscription Lifecycle Mapping</h3>
-        <p>The key architectural decision: mapping FieldRoutes subscription states to CRM pipeline stages so every customer lands in the right automation track automatically.</p>
+        <p>The key architectural decision: mapping FieldRoutes subscription states to CRM pipeline stages so every customer lands in the right automation track&nbsp;automatically.</p>
 
         <div class="card">
             <table>
@@ -501,26 +501,26 @@
         </div>
 
         <h3>3. SMS-First Communication Architecture</h3>
-        <p>With 49% of customers having no email, we designed every automation workflow as <strong>SMS-first, email-second</strong>. This flips the typical CRM playbook &mdash; which assumes email is primary &mdash; and ensures no customer falls through the cracks.</p>
+        <p>With 49% of customers having no email, we designed every automation workflow as <strong>SMS-first, email-second</strong>. This flips the typical CRM playbook &mdash; which assumes email is primary &mdash; and ensures no customer falls through the&nbsp;cracks.</p>
 
         <div class="card green-highlight">
             <h3>10 Automation Workflows Deployed</h3>
             <ul class="feature-list">
-                <li>Post-service review requests (SMS &rarr; email, 2-3 hours after appointment)</li>
-                <li>New customer welcome sequence (3 messages over 7 days)</li>
-                <li>Speed-to-lead auto-response (&lt;60 seconds on new customer creation)</li>
-                <li>Missed call text-back (immediate SMS when inbound call goes unanswered)</li>
-                <li>Full pipeline synchronization (FieldRoutes &rarr; CRM every 5 minutes)</li>
-                <li>Subscription cancellation win-back (Day 1 / Day 7 / Day 30)</li>
-                <li>Frozen subscription reactivation campaign</li>
-                <li>Appointment reminders (day-before SMS)</li>
-                <li>Missed appointment rebooking</li>
-                <li>Seasonal service upsell (cross-sell termite, rodent, mosquito treatments)</li>
+                <li>Post-service review requests (SMS &rarr; email, 2-3 hours after&nbsp;appointment)</li>
+                <li>New customer welcome sequence (3 messages over 7&nbsp;days)</li>
+                <li>Speed-to-lead auto-response (&lt;60 seconds on new customer&nbsp;creation)</li>
+                <li>Missed call text-back (immediate SMS when inbound call goes&nbsp;unanswered)</li>
+                <li>Full pipeline synchronization (FieldRoutes &rarr; CRM every 5&nbsp;minutes)</li>
+                <li>Subscription cancellation win-back (Day 1 / Day 7 / Day&nbsp;30)</li>
+                <li>Frozen subscription reactivation&nbsp;campaign</li>
+                <li>Appointment reminders (day-before&nbsp;SMS)</li>
+                <li>Missed appointment&nbsp;rebooking</li>
+                <li>Seasonal service upsell (cross-sell termite, rodent, mosquito&nbsp;treatments)</li>
             </ul>
         </div>
 
         <h3>4. Isolated Infrastructure</h3>
-        <p>Every client gets its own Modal app, its own secrets vault, and its own data volume. Valley Pest's sync runs in complete isolation &mdash; no shared credentials, no shared state, no cross-contamination with any other client's data.</p>
+        <p>Every client gets its own Modal app, its own secrets vault, and its own data volume. Valley Pest's sync runs in complete isolation &mdash; no shared credentials, no shared state, no cross-contamination with any other client's&nbsp;data.</p>
     </div>
 </section>
 
@@ -535,13 +535,13 @@
                 <div class="price">$0 Automation</div>
                 <div class="detail" style="margin-bottom: 12px;">8,373 customers running on zero automated communication</div>
                 <ul class="feature-list" style="margin-top: 16px;">
-                    <li class="missing">No review requests after service</li>
-                    <li class="missing">No welcome sequence for new customers</li>
-                    <li class="missing">No win-back for cancellations</li>
-                    <li class="missing">No lead source tracking</li>
-                    <li class="missing">No speed-to-lead response</li>
-                    <li class="missing">No missed call follow-up</li>
-                    <li class="missing">49% of customers unreachable by email</li>
+                    <li class="missing">No review requests after&nbsp;service</li>
+                    <li class="missing">No welcome sequence for new&nbsp;customers</li>
+                    <li class="missing">No win-back for&nbsp;cancellations</li>
+                    <li class="missing">No lead source&nbsp;tracking</li>
+                    <li class="missing">No speed-to-lead&nbsp;response</li>
+                    <li class="missing">No missed call&nbsp;follow-up</li>
+                    <li class="missing">49% of customers unreachable by&nbsp;email</li>
                 </ul>
             </div>
             <div class="comparison-card agm">
@@ -549,13 +549,13 @@
                 <div class="price">10 Workflows</div>
                 <div class="detail" style="margin-bottom: 12px;">Full lifecycle automation covering 100% of customer base</div>
                 <ul class="feature-list" style="margin-top: 16px;">
-                    <li>SMS-first architecture (reaches all 8,373 customers)</li>
-                    <li>Post-service review requests on every completed job</li>
-                    <li>Sub-60-second lead response</li>
-                    <li>Cancellation win-back sequences</li>
-                    <li>Pipeline sync every 5 minutes</li>
-                    <li>Isolated infrastructure per client</li>
-                    <li>Full audit trail with SQLite state tracking</li>
+                    <li>SMS-first architecture (reaches all 8,373&nbsp;customers)</li>
+                    <li>Post-service review requests on every completed&nbsp;job</li>
+                    <li>Sub-60-second lead&nbsp;response</li>
+                    <li>Cancellation win-back&nbsp;sequences</li>
+                    <li>Pipeline sync every 5&nbsp;minutes</li>
+                    <li>Isolated infrastructure per&nbsp;client</li>
+                    <li>Full audit trail with SQLite state&nbsp;tracking</li>
                 </ul>
             </div>
         </div>
@@ -574,17 +574,17 @@
 
         <div class="card yellow-highlight">
             <h3>Industry Pattern: Phone-Only Customers</h3>
-            <p>Pest control customers call when they have an emergency &mdash; ants in the kitchen, scorpions in the garage, rodents in the attic. They schedule service over the phone and never provide an email. <strong>Any automation platform that assumes email-first will fail in pest control.</strong> SMS isn't a nice-to-have. It's the primary channel.</p>
+            <p>Pest control customers call when they have an emergency &mdash; ants in the kitchen, scorpions in the garage, rodents in the attic. They schedule service over the phone and never provide an email. <strong>Any automation platform that assumes email-first will fail in pest control.</strong> SMS isn't a nice-to-have. It's the primary&nbsp;channel.</p>
         </div>
 
         <div class="card yellow-highlight">
             <h3>Industry Pattern: Recurring Revenue Without Recurring Communication</h3>
-            <p>Pest control companies sit on gold mines of recurring subscriptions &mdash; quarterly treatments, annual contracts, seasonal services. But most never automate the communication around those subscriptions. No post-service check-in. No seasonal upsell. No cancellation win-back. The recurring revenue model exists in the FSM but never extends to the marketing stack.</p>
+            <p>Pest control companies sit on gold mines of recurring subscriptions &mdash; quarterly treatments, annual contracts, seasonal services. But most never automate the communication around those subscriptions. No post-service check-in. No seasonal upsell. No cancellation win-back. The recurring revenue model exists in the FSM but never extends to the marketing&nbsp;stack.</p>
         </div>
 
         <div class="card yellow-highlight">
             <h3>Industry Pattern: No Webhook Support on FieldRoutes</h3>
-            <p>FieldRoutes (PestRoutes) is one of the most widely used pest control platforms in North America. It has <strong>zero webhook support</strong>. Every company on FieldRoutes that wants real-time automation needs a polling architecture. Most don't know this limitation exists until they try to build on it &mdash; and most integration vendors won't tell them because they don't build against the API directly.</p>
+            <p>FieldRoutes (PestRoutes) is one of the most widely used pest control platforms in North America. It has <strong>zero webhook support</strong>. Every company on FieldRoutes that wants real-time automation needs a polling architecture. Most don't know this limitation exists until they try to build on it &mdash; and most integration vendors won't tell them because they don't build against the API&nbsp;directly.</p>
         </div>
 
         <table>
@@ -624,14 +624,14 @@
         <div class="card green-highlight">
             <h3>What Changed</h3>
             <ul class="feature-list">
-                <li>Every completed service now triggers an automated review request via SMS</li>
-                <li>New customers receive a welcome sequence within 60 seconds of being created in FieldRoutes</li>
-                <li>Cancelled subscriptions automatically enter a 30-day win-back campaign</li>
-                <li>Frozen subscriptions get targeted reactivation messages</li>
-                <li>Missed calls get an immediate text-back &mdash; no more lost leads</li>
-                <li>Full pipeline visibility in CRM without touching FieldRoutes</li>
-                <li>Every sync tracked, every error alerted, every state change logged</li>
-                <li>Foundation for lead source attribution going forward</li>
+                <li>Every completed service now triggers an automated review request via&nbsp;SMS</li>
+                <li>New customers receive a welcome sequence within 60 seconds of being created in&nbsp;FieldRoutes</li>
+                <li>Cancelled subscriptions automatically enter a 30-day win-back&nbsp;campaign</li>
+                <li>Frozen subscriptions get targeted reactivation&nbsp;messages</li>
+                <li>Missed calls get an immediate text-back &mdash; no more lost&nbsp;leads</li>
+                <li>Full pipeline visibility in CRM without touching&nbsp;FieldRoutes</li>
+                <li>Every sync tracked, every error alerted, every state change&nbsp;logged</li>
+                <li>Foundation for lead source attribution going&nbsp;forward</li>
             </ul>
         </div>
     </div>
@@ -641,8 +641,8 @@
 <section style="background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%); color: white; border: none;">
     <div class="container" style="text-align: center;">
         <h2 style="color: white;">About AGM Pro Tools</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">AGM Pro Tools is an enterprise integration platform for field service businesses. We connect your FSM, CRM, and sales automation systems with self-healing pipelines, real-time monitoring, and the operational intelligence to find and fix problems before they affect your customers.</p>
-        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We understand what's happening inside them.</p>
+        <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">AGM Pro Tools is an enterprise integration platform for field service businesses. We connect your FSM, CRM, and sales automation systems with self-healing pipelines, real-time monitoring, and the operational intelligence to find and fix problems before they affect your&nbsp;customers.</p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We understand what's happening inside&nbsp;them.</p>
         <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; margin-top: 24px; padding: 14px 32px; background: #5abd28; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Book a Free Strategy Call</a>
     </div>
 </section>
@@ -650,9 +650,9 @@
 <!-- FOOTER -->
 <div class="footer">
     <div class="container">
-        <p>AGM Pro Tools &mdash; Enterprise Integration for Field Service</p>
+        <p>AGM Pro Tools &mdash; Enterprise Integration for Field&nbsp;Service</p>
         <p style="margin-top: 8px;"><a href="https://agmprotools.com" style="color: rgba(255,255,255,0.6);">agmprotools.com</a></p>
-        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on live integration engineering &mdash; March 2026</p>
+        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on live integration engineering &mdash; March&nbsp;2026</p>
     </div>
 </div>
 

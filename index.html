@@ -348,7 +348,7 @@
     <div class="container">
         <div class="hero-badge">AGM Pro Tools — Case Study</div>
         <h1>How We Replaced Zapier and Fixed 176 Customer Records in One Session</h1>
-        <p>Heavenly Greens — Salesforce & AGM Integration Overhaul</p>
+        <p>Heavenly Greens — Salesforce & AGM Integration&nbsp;Overhaul</p>
         <div class="hero-stats">
             <div class="hero-stat">
                 <div class="number">176</div>
@@ -374,7 +374,7 @@
 <section>
     <div class="container">
         <h2>The Client</h2>
-        <p><strong>Heavenly Greens</strong> is a leading artificial turf installation company serving the San Francisco Bay Area. They operate across multiple sales channels including direct residential, commercial, and a strategic partnership with Costco through Shaw Industries. Their technology stack spans Salesforce (CRM), AGM/GoHighLevel (marketing automation & pipeline management), and multiple third-party integrations including DocuSign, Invoca, and QuickBooks.</p>
+        <p><strong>Heavenly Greens</strong> is a leading artificial turf installation company serving the San Francisco Bay Area. They operate across multiple sales channels including direct residential, commercial, and a strategic partnership with Costco through Shaw Industries. Their technology stack spans Salesforce (CRM), AGM/GoHighLevel (marketing automation & pipeline management), and multiple third-party integrations including DocuSign, Invoca, and&nbsp;QuickBooks.</p>
         <div class="metrics">
             <div class="metric">
                 <div class="value">27</div>
@@ -402,10 +402,10 @@
         <h2>The Problem</h2>
         <div class="card highlight">
             <h3>Customer-Facing Documents Had Wrong Names</h3>
-            <p>A completed installation verification form — signed by the customer — showed the member name as <strong>"Jeff Guevara-Costco-Front Yard"</strong> instead of simply <strong>"Jeff Guevara."</strong> The project descriptor was leaking into the customer's actual name on legally binding documents.</p>
+            <p>A completed installation verification form — signed by the customer — showed the member name as <strong>"Jeff Guevara-Costco-Front Yard"</strong> instead of simply <strong>"Jeff Guevara."</strong> The project descriptor was leaking into the customer's actual name on legally binding&nbsp;documents.</p>
         </div>
-        <p>This wasn't an isolated incident. The contamination was systemic — affecting every customer whose job progressed through certain pipeline stages. The wrong names were appearing on contracts, completion forms, review requests, and internal communications.</p>
-        <p>The business impact was immediate: unprofessional customer-facing documents, inaccurate CRM data, and broken automation workflows that depended on clean contact names.</p>
+        <p>This wasn't an isolated incident. The contamination was systemic — affecting every customer whose job progressed through certain pipeline stages. The wrong names were appearing on contracts, completion forms, review requests, and internal&nbsp;communications.</p>
+        <p>The business impact was immediate: unprofessional customer-facing documents, inaccurate CRM data, and broken automation workflows that depended on clean contact&nbsp;names.</p>
     </div>
 </section>
 
@@ -413,28 +413,28 @@
 <section>
     <div class="container">
         <h2>The Investigation</h2>
-        <p>AGM Pro Tools conducted a real-time triage session, tracing the data contamination from the signed document back through every system in the stack.</p>
+        <p>AGM Pro Tools conducted a real-time triage session, tracing the data contamination from the signed document back through every system in the&nbsp;stack.</p>
 
         <div class="timeline">
             <div class="timeline-item resolved">
                 <h4>Traced the contamination path</h4>
-                <p>Followed the mangled name from the completion form → AGM contact record → Zapier automation → Salesforce Opportunity fields. Identified that Zapier was overwriting AGM contact names on every pipeline stage change.</p>
+                <p>Followed the mangled name from the completion form → AGM contact record → Zapier automation → Salesforce Opportunity fields. Identified that Zapier was overwriting AGM contact names on every pipeline stage&nbsp;change.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>Found the root cause: a dead integration field</h4>
-                <p>The Zapier Zaps were mapping a field called "Broadly Business Name" to the AGM contact's Full Name. Broadly — a review management platform — had been cancelled months ago, but its custom fields and automation were never cleaned up in Salesforce. The field happened to contain clean names for some contacts, but for others, HG's team had edited it to include project descriptors.</p>
+                <p>The Zapier Zaps were mapping a field called "Broadly Business Name" to the AGM contact's Full Name. Broadly — a review management platform — had been cancelled months ago, but its custom fields and automation were never cleaned up in Salesforce. The field happened to contain clean names for some contacts, but for others, HG's team had edited it to include project&nbsp;descriptors.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>Discovered Broadly was still firing outbound messages</h4>
-                <p>Queried the Salesforce API directly and found that while Broadly's custom fields had been removed, a workflow rule and outbound message on the Opportunity object were still active — sending data to a dead endpoint on every job completion. A ghost integration consuming resources and introducing risk.</p>
+                <p>Queried the Salesforce API directly and found that while Broadly's custom fields had been removed, a workflow rule and outbound message on the Opportunity object were still active — sending data to a dead endpoint on every job completion. A ghost integration consuming resources and introducing&nbsp;risk.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>Identified broken review automation</h4>
-                <p>The review request workflow existed in AGM and was correctly built, but it was never firing. The trigger chain — Salesforce marks a job complete → Zapier syncs to AGM → AGM review workflow fires — was broken because Zapier was using the wrong field mapping. Customers were completing jobs and never receiving review requests.</p>
+                <p>The review request workflow existed in AGM and was correctly built, but it was never firing. The trigger chain — Salesforce marks a job complete → Zapier syncs to AGM → AGM review workflow fires — was broken because Zapier was using the wrong field mapping. Customers were completing jobs and never receiving review&nbsp;requests.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>Confirmed the Salesforce object limitation</h4>
-                <p>Investigated why the original Zapier builder used "Broadly Business Name" in the first place. The Salesforce Opportunity (Job) object has no separate First Name / Last Name fields. The builder needed a clean name source, couldn't find one on the Job record, and used the Broadly field as a workaround. It worked until Broadly was removed.</p>
+                <p>Investigated why the original Zapier builder used "Broadly Business Name" in the first place. The Salesforce Opportunity (Job) object has no separate First Name / Last Name fields. The builder needed a clean name source, couldn't find one on the Job record, and used the Broadly field as a workaround. It worked until Broadly was&nbsp;removed.</p>
             </div>
         </div>
     </div>
@@ -444,7 +444,7 @@
 <section>
     <div class="container">
         <h2>The Audit</h2>
-        <p>Before building any replacement, AGM Pro Tools conducted a complete Salesforce system audit — mapping every automation, trigger, email alert, and integration to ensure nothing would be disrupted during the fix.</p>
+        <p>Before building any replacement, AGM Pro Tools conducted a complete Salesforce system audit — mapping every automation, trigger, email alert, and integration to ensure nothing would be disrupted during the&nbsp;fix.</p>
 
         <div class="metrics">
             <div class="metric">
@@ -473,16 +473,16 @@
             </div>
         </div>
 
-        <p>The audit was compiled into a comprehensive reference document — every workflow rule categorized by object, every email alert mapped to its trigger, every installed package assessed for active vs. legacy status. This document now serves as the foundation for the full Zapier deprecation roadmap.</p>
+        <p>The audit was compiled into a comprehensive reference document — every workflow rule categorized by object, every email alert mapped to its trigger, every installed package assessed for active vs. legacy status. This document now serves as the foundation for the full Zapier deprecation&nbsp;roadmap.</p>
 
         <div class="card green-highlight">
             <h3>Additional Findings</h3>
             <ul class="feature-list">
-                <li>Broadly outbound message still active on cancelled subscription</li>
-                <li>HubSpot integration package installed (v2.60) — status unknown, possibly legacy</li>
-                <li>No review automation firing despite workflow being correctly built in AGM</li>
-                <li>Salesforce "Company to Full Name" workflow rule on Lead object — separate naming concern</li>
-                <li>42 Zapier Zaps active — many redundant or using outdated field mappings</li>
+                <li>Broadly outbound message still active on cancelled&nbsp;subscription</li>
+                <li>HubSpot integration package installed (v2.60) — status unknown, possibly&nbsp;legacy</li>
+                <li>No review automation firing despite workflow being correctly built in&nbsp;AGM</li>
+                <li>Salesforce "Company to Full Name" workflow rule on Lead object — separate naming&nbsp;concern</li>
+                <li>42 Zapier Zaps active — many redundant or using outdated field&nbsp;mappings</li>
             </ul>
         </div>
     </div>
@@ -494,7 +494,7 @@
         <h2>The Solution</h2>
 
         <h3>1. Built an Enterprise-Grade Replacement</h3>
-        <p>Rather than fixing the Zapier field mapping (which would have been a band-aid on a fundamentally flawed approach), AGM Pro Tools built a purpose-built integration endpoint on Modal that replaces all four Salesforce → AGM Zapier Zaps.</p>
+        <p>Rather than fixing the Zapier field mapping (which would have been a band-aid on a fundamentally flawed approach), AGM Pro Tools built a purpose-built integration endpoint on Modal that replaces all four Salesforce → AGM Zapier&nbsp;Zaps.</p>
 
         <div class="card">
             <h3>Architecture: SF → AGM Stage Sync</h3>
@@ -513,7 +513,7 @@
         </div>
 
         <h3>2. Cleaned 176 Contaminated Contact Records</h3>
-        <p>Built and executed a programmatic cleanup that stripped project descriptors from every affected AGM contact name. The script handled 30+ contamination patterns including compound variants (-costco-back yard, -front and side yard-pavers, -back yard-cancelled) and edge cases like hyphenated surnames (Garcia-Mendoza, Evoy-Mount).</p>
+        <p>Built and executed a programmatic cleanup that stripped project descriptors from every affected AGM contact name. The script handled 30+ contamination patterns including compound variants (-costco-back yard, -front and side yard-pavers, -back yard-cancelled) and edge cases like hyphenated surnames (Garcia-Mendoza,&nbsp;Evoy-Mount).</p>
 
         <div class="metrics">
             <div class="metric">
@@ -535,10 +535,10 @@
         </div>
 
         <h3>3. Restored the Review Request Chain</h3>
-        <p>By replacing the Zapier bridge with a clean integration that properly moves pipeline stages, the existing AGM review workflow now fires correctly when production marks a job as "Completed - Paid" in Salesforce. The review request chain — which had been silently broken — is now operational.</p>
+        <p>By replacing the Zapier bridge with a clean integration that properly moves pipeline stages, the existing AGM review workflow now fires correctly when production marks a job as "Completed - Paid" in Salesforce. The review request chain — which had been silently broken — is now&nbsp;operational.</p>
 
         <h3>4. Deployed with Zero Downtime</h3>
-        <p>The Modal endpoint was deployed alongside the existing Costco lead intake cron, sharing the same isolated infrastructure (secrets, volumes, monitoring). The old Zapier Zaps were paused only after the replacement was validated against live data. At no point was any business workflow interrupted.</p>
+        <p>The Modal endpoint was deployed alongside the existing Costco lead intake cron, sharing the same isolated infrastructure (secrets, volumes, monitoring). The old Zapier Zaps were paused only after the replacement was validated against live data. At no point was any business workflow&nbsp;interrupted.</p>
     </div>
 </section>
 
@@ -561,11 +561,11 @@
                     <tr><td>Project Manager</td><td>10-15 hrs</td><td>$1,500-3,750</td></tr>
                 </table>
                 <ul class="feature-list" style="margin-top: 16px;">
-                    <li class="missing">No single vendor sees the full picture</li>
-                    <li class="missing">No deduplication or safety checks</li>
-                    <li class="missing">No real-time monitoring or alerting</li>
-                    <li class="missing">No audit trail</li>
-                    <li class="missing">3-6 week timeline</li>
+                    <li class="missing">No single vendor sees the full&nbsp;picture</li>
+                    <li class="missing">No deduplication or safety&nbsp;checks</li>
+                    <li class="missing">No real-time monitoring or&nbsp;alerting</li>
+                    <li class="missing">No audit&nbsp;trail</li>
+                    <li class="missing">3-6 week&nbsp;timeline</li>
                 </ul>
             </div>
             <div class="comparison-card agm">
@@ -582,10 +582,10 @@
                 </table>
                 <ul class="feature-list" style="margin-top: 16px;">
                     <li>Full-stack visibility (SF + AGM + Zapier)</li>
-                    <li>SQLite dedup — never process same event twice</li>
-                    <li>Real-time Slack alerts on every failure</li>
-                    <li>Complete audit trail with JSON logs</li>
-                    <li>Same-day delivery</li>
+                    <li>SQLite dedup — never process same event&nbsp;twice</li>
+                    <li>Real-time Slack alerts on every&nbsp;failure</li>
+                    <li>Complete audit trail with JSON&nbsp;logs</li>
+                    <li>Same-day&nbsp;delivery</li>
                 </ul>
             </div>
         </div>
@@ -642,13 +642,13 @@
         <div class="card green-highlight">
             <h3>Immediate Outcomes</h3>
             <ul class="feature-list">
-                <li>Customer-facing documents now display correct names</li>
-                <li>Review request automation restored — customers now receive review requests after job completion</li>
-                <li>176 historically contaminated contact records cleaned to proper names</li>
-                <li>Dead Broadly integration identified for deactivation</li>
-                <li>Complete Salesforce system audit documented for ongoing reference</li>
+                <li>Customer-facing documents now display correct&nbsp;names</li>
+                <li>Review request automation restored — customers now receive review requests after job&nbsp;completion</li>
+                <li>176 historically contaminated contact records cleaned to proper&nbsp;names</li>
+                <li>Dead Broadly integration identified for&nbsp;deactivation</li>
+                <li>Complete Salesforce system audit documented for ongoing&nbsp;reference</li>
                 <li>8-phase Zapier deprecation roadmap established (42 Zaps → 0)</li>
-                <li>Enterprise-grade monitoring, alerting, and audit trail in place</li>
+                <li>Enterprise-grade monitoring, alerting, and audit trail in&nbsp;place</li>
             </ul>
         </div>
     </div>
@@ -658,8 +658,8 @@
 <section style="background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%); color: white; border: none;">
     <div class="container" style="text-align: center;">
         <h2 style="color: white;">About AGM Pro Tools</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">AGM Pro Tools is an enterprise integration platform for field service businesses. We connect your FSM, CRM, and sales automation systems with self-healing pipelines, real-time monitoring, and the operational intelligence to find and fix problems before they affect your customers.</p>
-        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We understand what's happening inside them.</p>
+        <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">AGM Pro Tools is an enterprise integration platform for field service businesses. We connect your FSM, CRM, and sales automation systems with self-healing pipelines, real-time monitoring, and the operational intelligence to find and fix problems before they affect your&nbsp;customers.</p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We understand what's happening inside&nbsp;them.</p>
         <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; margin-top: 24px; padding: 14px 32px; background: #5abd28; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Book a Free Strategy Call</a>
     </div>
 </section>
@@ -667,9 +667,9 @@
 <!-- FOOTER -->
 <div class="footer">
     <div class="container">
-        <p>AGM Pro Tools &mdash; Enterprise Integration for Field Service</p>
+        <p>AGM Pro Tools &mdash; Enterprise Integration for Field&nbsp;Service</p>
         <p style="margin-top: 8px;"><a href="https://agmprotools.com" style="color: rgba(255,255,255,0.6);">agmprotools.com</a></p>
-        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on a live engineering session — March 20, 2026</p>
+        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on a live engineering session — March 20,&nbsp;2026</p>
     </div>
 </div>
 

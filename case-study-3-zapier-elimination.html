@@ -353,7 +353,7 @@
     <div class="container">
         <div class="hero-badge">AGM Pro Tools &mdash; Case Study #3</div>
         <h1>How We Eliminated 38 Zapier Automations and Built a Self-Healing Lead Pipeline</h1>
-        <p>Heavenly Greens &mdash; Full Zapier Deprecation &amp; Modal Migration</p>
+        <p>Heavenly Greens &mdash; Full Zapier Deprecation &amp; Modal&nbsp;Migration</p>
         <div class="hero-stats">
             <div class="hero-stat">
                 <div class="number">38</div>
@@ -379,7 +379,7 @@
 <section>
     <div class="container">
         <h2>The Client</h2>
-        <p><strong>Heavenly Greens</strong> is one of Northern California's largest artificial turf installation companies, operating across 9+ locations from Sacramento to Santa Cruz. They run a dual-CRM stack: <strong>AGM</strong> (GoHighLevel) for marketing automation, lead nurturing, and pipeline management, and <strong>Salesforce</strong> as the system of record for sales, jobs, and reporting. A Costco/Shaw Industries partnership adds a high-volume retail channel with its own lead intake process.</p>
+        <p><strong>Heavenly Greens</strong> is one of Northern California's largest artificial turf installation companies, operating across 9+ locations from Sacramento to Santa Cruz. They run a dual-CRM stack: <strong>AGM</strong> (GoHighLevel) for marketing automation, lead nurturing, and pipeline management, and <strong>Salesforce</strong> as the system of record for sales, jobs, and reporting. A Costco/Shaw Industries partnership adds a high-volume retail channel with its own lead intake&nbsp;process.</p>
         <div class="metrics">
             <div class="metric">
                 <div class="value">9+</div>
@@ -407,22 +407,22 @@
         <h2>The Problem</h2>
         <div class="card red-highlight">
             <h3>Leads Were Falling Into a Black Hole</h3>
-            <p>Heavenly Greens' website forms &mdash; Schedule Consultation, Request Callback, Services, and PPC landing pages across all 9 locations &mdash; were creating contacts in AGM. But those leads were <strong>never reaching Salesforce</strong>. The sales team couldn't see them. The pipeline was silently breaking.</p>
+            <p>Heavenly Greens' website forms &mdash; Schedule Consultation, Request Callback, Services, and PPC landing pages across all 9 locations &mdash; were creating contacts in AGM. But those leads were <strong>never reaching Salesforce</strong>. The sales team couldn't see them. The pipeline was silently&nbsp;breaking.</p>
         </div>
 
         <h3>How It Happened</h3>
-        <p>The company relied on <strong>38 Zapier automations</strong> to bridge AGM and Salesforce. Each location, each form type, each lead channel had its own zap &mdash; a fragile web of point-to-point integrations with no monitoring, no deduplication, and no alerting when something broke.</p>
+        <p>The company relied on <strong>38 Zapier automations</strong> to bridge AGM and Salesforce. Each location, each form type, each lead channel had its own zap &mdash; a fragile web of point-to-point integrations with no monitoring, no deduplication, and no alerting when something&nbsp;broke.</p>
         <p>As part of a broader migration initiative, some zaps had been turned off &mdash; but the Modal-based replacement wasn't live yet. The result: <strong>web form leads were landing in AGM with no outbound path to Salesforce.</strong></p>
 
         <div class="card highlight">
             <h3>The Zapier Problem at Scale</h3>
             <ul class="feature-list">
-                <li class="missing">38 individual zaps &mdash; each a single point of failure</li>
-                <li class="missing">No deduplication &mdash; same lead could sync twice</li>
-                <li class="missing">No monitoring &mdash; silent failures with no alerts</li>
-                <li class="missing">No source mapping intelligence &mdash; all leads arrived with generic sources</li>
-                <li class="missing">$73/month Zapier cost with zero operational visibility</li>
-                <li class="missing">Any zap failure meant leads silently vanished</li>
+                <li class="missing">38 individual zaps &mdash; each a single point of&nbsp;failure</li>
+                <li class="missing">No deduplication &mdash; same lead could sync&nbsp;twice</li>
+                <li class="missing">No monitoring &mdash; silent failures with no&nbsp;alerts</li>
+                <li class="missing">No source mapping intelligence &mdash; all leads arrived with generic&nbsp;sources</li>
+                <li class="missing">$73/month Zapier cost with zero operational&nbsp;visibility</li>
+                <li class="missing">Any zap failure meant leads silently&nbsp;vanished</li>
             </ul>
         </div>
     </div>
@@ -432,28 +432,28 @@
 <section>
     <div class="container">
         <h2>The Investigation</h2>
-        <p>AGM Pro Tools conducted a complete audit of all 42 Zapier automations (38 active, 4 already off) across three pages of the Zapier dashboard, categorizing each by function, replacement status, and risk.</p>
+        <p>AGM Pro Tools conducted a complete audit of all 42 Zapier automations (38 active, 4 already off) across three pages of the Zapier dashboard, categorizing each by function, replacement status, and&nbsp;risk.</p>
 
         <div class="timeline">
             <div class="timeline-item resolved">
                 <h4>Full Zapier audit &mdash; all 42 zaps cataloged</h4>
-                <p>Every zap categorized: 32 location-based AGM&rarr;SF lead syncs, 1 SF Job Sold&rarr;AGM tag removal, 1 Costco email intake, 1 AGM Chat&rarr;SF, 3 unknown/investigation items, 2 obsolete, 2 already off.</p>
+                <p>Every zap categorized: 32 location-based AGM&rarr;SF lead syncs, 1 SF Job Sold&rarr;AGM tag removal, 1 Costco email intake, 1 AGM Chat&rarr;SF, 3 unknown/investigation items, 2 obsolete, 2 already&nbsp;off.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>Identified the GHL API limitation</h4>
-                <p>The original plan was to point AGM workflow webhooks at Modal endpoints. Investigation revealed the GHL v2 API <strong>cannot read or edit workflow actions</strong> &mdash; only list workflow names. This meant Andrew would need to manually swap webhook URLs in 32+ workflows. Unacceptable dependency.</p>
+                <p>The original plan was to point AGM workflow webhooks at Modal endpoints. Investigation revealed the GHL v2 API <strong>cannot read or edit workflow actions</strong> &mdash; only list workflow names. This meant Andrew would need to manually swap webhook URLs in 32+ workflows. Unacceptable&nbsp;dependency.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>Designed the polling architecture</h4>
-                <p>Instead of waiting for webhooks, the replacement <strong>polls AGM every 5 minutes</strong> for new contacts. This eliminates all dependency on AGM workflow configuration &mdash; no manual URL swaps, no Andrew bottleneck, fully autonomous operation.</p>
+                <p>Instead of waiting for webhooks, the replacement <strong>polls AGM every 5 minutes</strong> for new contacts. This eliminates all dependency on AGM workflow configuration &mdash; no manual URL swaps, no Andrew bottleneck, fully autonomous&nbsp;operation.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>Mapped all source fields</h4>
-                <p>Documented every AGM source field and UTM parameter, then built a mapping table to Salesforce's <code>LeadSource</code> picklist &mdash; ensuring leads arrive in SF with the correct attribution (Paid Search, Internet, Chat Bot, Display Ads, Referral).</p>
+                <p>Documented every AGM source field and UTM parameter, then built a mapping table to Salesforce's <code>LeadSource</code> picklist &mdash; ensuring leads arrive in SF with the correct attribution (Paid Search, Internet, Chat Bot, Display Ads,&nbsp;Referral).</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>Resolved three unknown zaps</h4>
-                <p>Three zaps flagged during audit as "needs investigation" &mdash; Open Service Request, Stop Nurture, and Appointment from AGM &mdash; all confirmed as either dead, redundant, or already covered by existing Modal crons.</p>
+                <p>Three zaps flagged during audit as "needs investigation" &mdash; Open Service Request, Stop Nurture, and Appointment from AGM &mdash; all confirmed as either dead, redundant, or already covered by existing Modal&nbsp;crons.</p>
             </div>
         </div>
     </div>
@@ -465,7 +465,7 @@
         <h2>The Solution</h2>
 
         <h3>A Single Polling Engine Replaces 38 Zaps</h3>
-        <p>Instead of 38 fragile point-to-point integrations, AGM Pro Tools deployed a single intelligent polling engine on Modal that handles every lead sync path.</p>
+        <p>Instead of 38 fragile point-to-point integrations, AGM Pro Tools deployed a single intelligent polling engine on Modal that handles every lead sync&nbsp;path.</p>
 
         <div class="card">
             <h3>Architecture: AGM &rarr; SF Poller</h3>
@@ -483,7 +483,7 @@
         </div>
 
         <h3>Source Mapping Intelligence</h3>
-        <p>Every lead arrives in Salesforce with proper attribution &mdash; not a generic "Web" source like Zapier provided.</p>
+        <p>Every lead arrives in Salesforce with proper attribution &mdash; not a generic "Web" source like Zapier&nbsp;provided.</p>
 
         <div class="comparison">
             <div class="card" style="margin: 0;">
@@ -516,22 +516,22 @@
             <div class="phase-card">
                 <div class="phase-label live">Live &mdash; Mar 2</div>
                 <h4>Costco Email Intake</h4>
-                <p>CENTAH email &rarr; Salesforce + AGM pipeline. Dedicated Modal cron, completely independent of Zapier.</p>
+                <p>CENTAH email &rarr; Salesforce + AGM pipeline. Dedicated Modal cron, completely independent of&nbsp;Zapier.</p>
             </div>
             <div class="phase-card">
                 <div class="phase-label live">Live &mdash; Mar 20</div>
                 <h4>SF &rarr; AGM Stage Sync</h4>
-                <p>Salesforce Opportunity stage changes sync to AGM pipeline positions every 5 minutes. Replaced 4 Zapier zaps.</p>
+                <p>Salesforce Opportunity stage changes sync to AGM pipeline positions every 5 minutes. Replaced 4 Zapier&nbsp;zaps.</p>
             </div>
             <div class="phase-card">
                 <div class="phase-label live">Live &mdash; Mar 27</div>
                 <h4>SF Job Sold &rarr; AGM Tags</h4>
-                <p>When SF marks a job as sold, Modal adds <code>job-sold</code> + <code>remove-from-lnc</code> tags to AGM contact. Every 10 minutes.</p>
+                <p>When SF marks a job as sold, Modal adds <code>job-sold</code> + <code>remove-from-lnc</code> tags to AGM contact. Every 10&nbsp;minutes.</p>
             </div>
             <div class="phase-card">
                 <div class="phase-label live">Live &mdash; Mar 30</div>
                 <h4>AGM &rarr; SF Lead Poller</h4>
-                <p>The final piece. All 32 location-based lead sync zaps replaced by a single 5-minute polling engine.</p>
+                <p>The final piece. All 32 location-based lead sync zaps replaced by a single 5-minute polling&nbsp;engine.</p>
             </div>
         </div>
     </div>
@@ -541,7 +541,7 @@
 <section style="background: rgba(41,128,185,0.10);">
     <div class="container">
         <h2>Live Verification</h2>
-        <p>On March 30, 2026, AGM Pro Tools demonstrated end-to-end proof by querying both the Salesforce and AGM APIs directly &mdash; not from logs, not from deploy output, but from the actual destination records.</p>
+        <p>On March 30, 2026, AGM Pro Tools demonstrated end-to-end proof by querying both the Salesforce and AGM APIs directly &mdash; not from logs, not from deploy output, but from the actual destination&nbsp;records.</p>
 
         <div class="card green-highlight">
             <h3>Cross-System Verification &mdash; March 30, 10:31 AM PT</h3>
@@ -566,7 +566,7 @@
                     <td class="green">Confirmed</td>
                 </tr>
             </table>
-            <p style="font-size: 13px; margin-top: 12px; margin-bottom: 0;">All three leads created via AGM web forms, picked up by the poller within 5 minutes, and confirmed present in Salesforce with correct source mapping and Modal sync stamps.</p>
+            <p style="font-size: 13px; margin-top: 12px; margin-bottom: 0;">All three leads created via AGM web forms, picked up by the poller within 5 minutes, and confirmed present in Salesforce with correct source mapping and Modal sync&nbsp;stamps.</p>
         </div>
 
         <blockquote>
@@ -586,13 +586,13 @@
                 <div class="price">$73/mo</div>
                 <div class="detail" style="margin-bottom: 12px;">38 individual zaps, zero visibility, silent failures</div>
                 <ul class="feature-list" style="margin-top: 12px;">
-                    <li class="missing">38 single points of failure</li>
-                    <li class="missing">No deduplication</li>
-                    <li class="missing">No source intelligence</li>
-                    <li class="missing">No monitoring or alerting</li>
-                    <li class="missing">No audit trail</li>
-                    <li class="missing">Dependent on manual workflow config</li>
-                    <li class="missing">Any zap failure = lost leads</li>
+                    <li class="missing">38 single points of&nbsp;failure</li>
+                    <li class="missing">No&nbsp;deduplication</li>
+                    <li class="missing">No source&nbsp;intelligence</li>
+                    <li class="missing">No monitoring or&nbsp;alerting</li>
+                    <li class="missing">No audit&nbsp;trail</li>
+                    <li class="missing">Dependent on manual workflow&nbsp;config</li>
+                    <li class="missing">Any zap failure = lost&nbsp;leads</li>
                 </ul>
             </div>
             <div class="comparison-card agm">
@@ -600,13 +600,13 @@
                 <div class="price">1 Engine</div>
                 <div class="detail" style="margin-bottom: 12px;">Single poller, real-time monitoring, self-healing</div>
                 <ul class="feature-list" style="margin-top: 12px;">
-                    <li>Single polling engine replaces all 38 zaps</li>
-                    <li>Email + phone deduplication on every lead</li>
+                    <li>Single polling engine replaces all 38&nbsp;zaps</li>
+                    <li>Email + phone deduplication on every&nbsp;lead</li>
                     <li>Intelligent source mapping (UTM + form-based)</li>
-                    <li>Real-time Slack alerts on every sync and failure</li>
-                    <li>Full audit trail with Modal sync stamps</li>
-                    <li>Zero AGM workflow dependencies</li>
-                    <li>Persistent state &mdash; survives restarts, never skips leads</li>
+                    <li>Real-time Slack alerts on every sync and&nbsp;failure</li>
+                    <li>Full audit trail with Modal sync&nbsp;stamps</li>
+                    <li>Zero AGM workflow&nbsp;dependencies</li>
+                    <li>Persistent state &mdash; survives restarts, never skips&nbsp;leads</li>
                 </ul>
             </div>
         </div>
@@ -632,32 +632,32 @@
 <section>
     <div class="container">
         <h2>Migration Timeline</h2>
-        <p>The full Zapier elimination was executed in phases over 28 days, with zero lead loss and zero downtime.</p>
+        <p>The full Zapier elimination was executed in phases over 28 days, with zero lead loss and zero&nbsp;downtime.</p>
 
         <div class="timeline">
             <div class="timeline-item resolved">
                 <h4>March 2 &mdash; Costco Email Intake</h4>
-                <p>First Modal cron deployed. CENTAH emails parsed and routed to Salesforce + AGM automatically. Replaced Zapier zap #3.</p>
+                <p>First Modal cron deployed. CENTAH emails parsed and routed to Salesforce + AGM automatically. Replaced Zapier zap&nbsp;#3.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>March 20 &mdash; SF &rarr; AGM Stage Sync</h4>
-                <p>Salesforce Opportunity stage changes sync to AGM pipeline every 5 minutes. Replaced 4 Zapier zaps. First Modal replacement with SQLite dedup and dead-letter replay.</p>
+                <p>Salesforce Opportunity stage changes sync to AGM pipeline every 5 minutes. Replaced 4 Zapier zaps. First Modal replacement with SQLite dedup and dead-letter&nbsp;replay.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>March 22 &mdash; Security Hardening</h4>
-                <p>Bearer auth on all endpoints. Encrypted backups. Pre-commit hooks. All 3 critical vulnerabilities closed.</p>
+                <p>Bearer auth on all endpoints. Encrypted backups. Pre-commit hooks. All 3 critical vulnerabilities&nbsp;closed.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>March 27 &mdash; SF Job Sold &rarr; AGM LNC Tags</h4>
-                <p>Modal cron tags AGM contacts with <code>job-sold</code> + <code>remove-from-lnc</code> when Salesforce marks a job as sold. Every 10 minutes. Replaced Zapier zap #1.</p>
+                <p>Modal cron tags AGM contacts with <code>job-sold</code> + <code>remove-from-lnc</code> when Salesforce marks a job as sold. Every 10 minutes. Replaced Zapier zap&nbsp;#1.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>March 27 &mdash; Modal Decomposition</h4>
-                <p>Monolithic 5,249-line Modal app decomposed into 6 independent apps + shared library. 12 total apps live. Each client isolated.</p>
+                <p>Monolithic 5,249-line Modal app decomposed into 6 independent apps + shared library. 12 total apps live. Each client&nbsp;isolated.</p>
             </div>
             <div class="timeline-item resolved">
                 <h4>March 30 &mdash; AGM &rarr; SF Lead Poller (Final Piece)</h4>
-                <p>Single polling engine replaces all 32 location-based lead sync zaps. Verified end-to-end with live Salesforce records. All 38 Zapier zaps now have Modal replacements.</p>
+                <p>Single polling engine replaces all 32 location-based lead sync zaps. Verified end-to-end with live Salesforce records. All 38 Zapier zaps now have Modal&nbsp;replacements.</p>
             </div>
         </div>
 
@@ -689,15 +689,15 @@
         <div class="card green-highlight">
             <h3>Outcomes</h3>
             <ul class="feature-list">
-                <li>All 38 Zapier automations replaced by Modal-based infrastructure</li>
-                <li>Web form leads now reach Salesforce within 5 minutes of submission</li>
-                <li>Proper lead source attribution for the first time (Paid Search, Internet, Chat Bot, Display Ads, Referral)</li>
-                <li>Complete audit trail &mdash; every synced lead stamped with source and timestamp</li>
-                <li>Real-time Slack monitoring on every sync event and failure</li>
-                <li>Zero dependency on AGM workflow configuration &mdash; fully autonomous</li>
-                <li>Costco lead pipeline completely isolated from general web leads</li>
-                <li>$73/month Zapier subscription eligible for cancellation</li>
-                <li>Single polling engine scales to any number of locations &mdash; no new zaps needed</li>
+                <li>All 38 Zapier automations replaced by Modal-based&nbsp;infrastructure</li>
+                <li>Web form leads now reach Salesforce within 5 minutes of&nbsp;submission</li>
+                <li>Proper lead source attribution for the first time (Paid Search, Internet, Chat Bot, Display Ads,&nbsp;Referral)</li>
+                <li>Complete audit trail &mdash; every synced lead stamped with source and&nbsp;timestamp</li>
+                <li>Real-time Slack monitoring on every sync event and&nbsp;failure</li>
+                <li>Zero dependency on AGM workflow configuration &mdash; fully&nbsp;autonomous</li>
+                <li>Costco lead pipeline completely isolated from general web&nbsp;leads</li>
+                <li>$73/month Zapier subscription eligible for&nbsp;cancellation</li>
+                <li>Single polling engine scales to any number of locations &mdash; no new zaps&nbsp;needed</li>
             </ul>
         </div>
 
@@ -711,8 +711,8 @@
 <section style="background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%); color: white; border: none;">
     <div class="container" style="text-align: center;">
         <h2 style="color: white;">About AGM Pro Tools</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">AGM Pro Tools is an enterprise integration platform for field service businesses. We connect your FSM, CRM, and sales automation systems with self-healing pipelines, real-time monitoring, and the operational intelligence to find and fix problems before they affect your customers.</p>
-        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We understand what's happening inside them.</p>
+        <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">AGM Pro Tools is an enterprise integration platform for field service businesses. We connect your FSM, CRM, and sales automation systems with self-healing pipelines, real-time monitoring, and the operational intelligence to find and fix problems before they affect your&nbsp;customers.</p>
+        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We understand what's happening inside&nbsp;them.</p>
         <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; margin-top: 24px; padding: 14px 32px; background: #5abd28; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Book a Free Strategy Call</a>
     </div>
 </section>
@@ -720,9 +720,9 @@
 <!-- FOOTER -->
 <div class="footer">
     <div class="container">
-        <p>AGM Pro Tools &mdash; Enterprise Integration for Field Service</p>
+        <p>AGM Pro Tools &mdash; Enterprise Integration for Field&nbsp;Service</p>
         <p style="margin-top: 8px;"><a href="https://agmprotools.com" style="color: rgba(255,255,255,0.6);">agmprotools.com</a></p>
-        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on live engineering sessions &mdash; March 2&ndash;30, 2026</p>
+        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on live engineering sessions &mdash; March 2&ndash;30,&nbsp;2026</p>
     </div>
 </div>
 

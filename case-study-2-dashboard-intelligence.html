@@ -348,7 +348,7 @@
     <div class="container">
         <div class="hero-badge">Case Study #2</div>
         <h1>From Data Chaos to Real-Time Intelligence</h1>
-        <p>How AGM Pro Tools unified three disconnected systems into a single live dashboard — in one session.</p>
+        <p>How AGM Pro Tools unified three disconnected systems into a single live dashboard — in one&nbsp;session.</p>
         <div class="hero-stats">
             <div class="hero-stat">
                 <div class="num">3</div>
@@ -375,7 +375,7 @@
     <div class="container">
         <div class="section-label">The Client</div>
         <h2>Heavenly Greens Artificial Turf</h2>
-        <p>Heavenly Greens is a Northern California artificial turf installer serving the Bay Area through a Costco partnership program. Leads flow in through CENTAH (Costco's call center), appointments are set and run by a dedicated sales rep, and jobs are managed across multiple platforms.</p>
+        <p>Heavenly Greens is a Northern California artificial turf installer serving the Bay Area through a Costco partnership program. Leads flow in through CENTAH (Costco's call center), appointments are set and run by a dedicated sales rep, and jobs are managed across multiple&nbsp;platforms.</p>
         <div class="card">
             <h3>The Tech Stack (Before AGM Pro Tools)</h3>
             <p style="margin:0">
@@ -393,24 +393,24 @@
     <div class="container">
         <div class="section-label">The Problem</div>
         <h2>"How many appointments did we run this week?"</h2>
-        <p>A question any contractor should be able to answer in seconds. For Heavenly Greens, it required stitching together data from three separate systems — and the answer was still wrong.</p>
+        <p>A question any contractor should be able to answer in seconds. For Heavenly Greens, it required stitching together data from three separate systems — and the answer was still&nbsp;wrong.</p>
 
         <div class="problem-grid">
             <div class="problem-card">
                 <h4>Stale Dashboard Data</h4>
-                <p>The Costco pipeline dashboard hadn't refreshed in over 24 hours. No automated refresh existed — data only updated when someone manually ran a script.</p>
+                <p>The Costco pipeline dashboard hadn't refreshed in over 24 hours. No automated refresh existed — data only updated when someone manually ran a&nbsp;script.</p>
             </div>
             <div class="problem-card">
                 <h4>Wrong Sold Count</h4>
-                <p>Dashboard showed 16 sales. The actual number was 18. Two sales were invisible because AGM's pipeline stage names didn't match the dashboard's lookup table.</p>
+                <p>Dashboard showed 16 sales. The actual number was 18. Two sales were invisible because AGM's pipeline stage names didn't match the dashboard's lookup&nbsp;table.</p>
             </div>
             <div class="problem-card">
                 <h4>Missing Product Data</h4>
-                <p>The Shaw Turf Products breakdown — which products were sold, how much square footage, at what revenue — was completely empty. Wrong custom field ID in the API query.</p>
+                <p>The Shaw Turf Products breakdown — which products were sold, how much square footage, at what revenue — was completely empty. Wrong custom field ID in the API&nbsp;query.</p>
             </div>
             <div class="problem-card">
                 <h4>Phantom Appointment Counts</h4>
-                <p>Appointments "set this week" showed 1. The real number was 8. Appointments "ran this month" showed 3. The real number was 30. The dashboard was counting by lead creation date, not actual appointment date.</p>
+                <p>Appointments "set this week" showed 1. The real number was 8. Appointments "ran this month" showed 3. The real number was 30. The dashboard was counting by lead creation date, not actual appointment&nbsp;date.</p>
             </div>
         </div>
 
@@ -426,7 +426,7 @@
     <div class="container">
         <div class="section-label">Root Cause Analysis</div>
         <h2>Five Systems, Zero Agreement</h2>
-        <p>Every data point on the dashboard required reconciling information from multiple sources. Each source used different field names, different stage names, and different date conventions.</p>
+        <p>Every data point on the dashboard required reconciling information from multiple sources. Each source used different field names, different stage names, and different date&nbsp;conventions.</p>
 
         <div class="card">
             <h3>The Mismatches We Found</h3>
@@ -482,42 +482,42 @@
             <div class="timeline-item">
                 <div class="time">Problem Identified</div>
                 <h4>Dashboard data was 24+ hours stale</h4>
-                <p>No automated refresh existed. The generation script ran locally, required manual execution, and wrote to a static JSON file on GitHub Pages.</p>
+                <p>No automated refresh existed. The generation script ran locally, required manual execution, and wrote to a static JSON file on GitHub&nbsp;Pages.</p>
             </div>
             <div class="timeline-item">
                 <div class="time">Fix Deployed</div>
                 <h4>Live API endpoint with 5-minute auto-refresh</h4>
-                <p>Moved data generation to a cloud function (Modal) running every 5 minutes. Dashboard now fetches live from the API endpoint. Fallback to static JSON if the endpoint is down.</p>
+                <p>Moved data generation to a cloud function (Modal) running every 5 minutes. Dashboard now fetches live from the API endpoint. Fallback to static JSON if the endpoint is&nbsp;down.</p>
             </div>
             <div class="timeline-item">
                 <div class="time">Problem Identified</div>
                 <h4>Sold count wrong: 16 instead of 18</h4>
-                <p>AGM pipeline stages use names like "Proposal/Contract Approved" and "Total Collected (Paid in Full)" — the dashboard only recognized "Contract Approved" and "Paid in Full." Two sales invisible.</p>
+                <p>AGM pipeline stages use names like "Proposal/Contract Approved" and "Total Collected (Paid in Full)" — the dashboard only recognized "Contract Approved" and "Paid in Full." Two sales&nbsp;invisible.</p>
             </div>
             <div class="timeline-item">
                 <div class="time">Fix Deployed</div>
                 <h4>Complete AGM stage map — all 12 stages mapped</h4>
-                <p>Pulled the actual pipeline stage names from the AGM API and mapped every one. Dashboard picks the more progressed status between SF and AGM. Matthew Degroot's $4,700 sale immediately appeared.</p>
+                <p>Pulled the actual pipeline stage names from the AGM API and mapped every one. Dashboard picks the more progressed status between SF and AGM. Matthew Degroot's $4,700 sale immediately&nbsp;appeared.</p>
             </div>
             <div class="timeline-item">
                 <div class="time">Problem Identified</div>
                 <h4>Shaw Turf Products card empty</h4>
-                <p>The API query was using the wrong custom field ID. "Costco - Shaw Turf Products" lives at field AytQaekFFJOfbIZQRS2a — the code was querying a non-existent field.</p>
+                <p>The API query was using the wrong custom field ID. "Costco - Shaw Turf Products" lives at field AytQaekFFJOfbIZQRS2a — the code was querying a non-existent&nbsp;field.</p>
             </div>
             <div class="timeline-item">
                 <div class="time">Fix Deployed</div>
                 <h4>Correct field IDs + live API fallback</h4>
-                <p>Fixed the Shaw Products field ID. Added live AGM API calls as fallback when local cache files don't exist (cloud environment). Product breakdown restored: Foundations Freedom, K9 Park, etc.</p>
+                <p>Fixed the Shaw Products field ID. Added live AGM API calls as fallback when local cache files don't exist (cloud environment). Product breakdown restored: Foundations Freedom, K9 Park,&nbsp;etc.</p>
             </div>
             <div class="timeline-item">
                 <div class="time">Problem Identified</div>
                 <h4>Appointment counts completely wrong</h4>
-                <p>"Appointments set this week: 1" — actual: 8. "Appointments ran this month: 3" — actual: 30. The dashboard was using lead creation date, not the actual appointment date from Salesforce.</p>
+                <p>"Appointments set this week: 1" — actual: 8. "Appointments ran this month: 3" — actual: 30. The dashboard was using lead creation date, not the actual appointment date from&nbsp;Salesforce.</p>
             </div>
             <div class="timeline-item">
                 <div class="time">Fix Deployed</div>
                 <h4>Real appointment dates from SF + new activity rows</h4>
-                <p>Added Next_Appointment_Date__c from Salesforce opportunities. New dashboard rows: Appointments Set Today/This Week/This Month + Appointments Ran This Month. Numbers now match Anthony's actual schedule.</p>
+                <p>Added Next_Appointment_Date__c from Salesforce opportunities. New dashboard rows: Appointments Set Today/This Week/This Month + Appointments Ran This Month. Numbers now match Anthony's actual&nbsp;schedule.</p>
             </div>
         </div>
     </div>
@@ -588,19 +588,19 @@
         <div class="problem-grid">
             <div class="fix-card">
                 <h4>For the Owner</h4>
-                <p>You can't manage what you can't measure. If your dashboard says 3 appointments ran this month when the real number is 30, every decision you make about sales staffing, marketing spend, and revenue forecasting is wrong.</p>
+                <p>You can't manage what you can't measure. If your dashboard says 3 appointments ran this month when the real number is 30, every decision you make about sales staffing, marketing spend, and revenue forecasting is&nbsp;wrong.</p>
             </div>
             <div class="fix-card">
                 <h4>For the Sales Team</h4>
-                <p>Anthony ran 30 appointments this month. The dashboard said 3. That's not just a data bug — it's a morale problem. Your best performer's work was invisible.</p>
+                <p>Anthony ran 30 appointments this month. The dashboard said 3. That's not just a data bug — it's a morale problem. Your best performer's work was&nbsp;invisible.</p>
             </div>
             <div class="fix-card">
                 <h4>For the Client Conversation</h4>
-                <p>When you're sitting across from a Costco member showing them your pipeline and the numbers are wrong, you lose credibility. Real-time data isn't a feature — it's table stakes.</p>
+                <p>When you're sitting across from a Costco member showing them your pipeline and the numbers are wrong, you lose credibility. Real-time data isn't a feature — it's table&nbsp;stakes.</p>
             </div>
             <div class="fix-card">
                 <h4>For the Business</h4>
-                <p>Three systems that don't talk to each other means three sources of truth — which means zero sources of truth. Every manual reconciliation is time spent not selling, not installing, not growing.</p>
+                <p>Three systems that don't talk to each other means three sources of truth — which means zero sources of truth. Every manual reconciliation is time spent not selling, not installing, not&nbsp;growing.</p>
             </div>
         </div>
 
@@ -651,13 +651,13 @@
     <div class="container">
         <div class="section-label">The Bigger Picture</div>
         <h2>This Is Why AGM Pro Tools Exists</h2>
-        <p>Heavenly Greens isn't unusual. Every contractor running Salesforce, ServiceTitan, Jobber, Housecall Pro, or Field Routes alongside a CRM has this exact problem: systems that don't agree on basic facts.</p>
-        <p>AGM Pro Tools doesn't just connect your systems — it <strong>reconciles</strong> them. It understands that "Proposal/Contract Approved" in AGM means the same thing as "Sales Closed Won" in Salesforce. It knows that an appointment date in the past means the appointment happened, even if nobody updated the stage.</p>
-        <p>The result: one dashboard you can trust. Real numbers. Real-time. Ready for the client conversation.</p>
+        <p>Heavenly Greens isn't unusual. Every contractor running Salesforce, ServiceTitan, Jobber, Housecall Pro, or Field Routes alongside a CRM has this exact problem: systems that don't agree on basic&nbsp;facts.</p>
+        <p>AGM Pro Tools doesn't just connect your systems — it <strong>reconciles</strong> them. It understands that "Proposal/Contract Approved" in AGM means the same thing as "Sales Closed Won" in Salesforce. It knows that an appointment date in the past means the appointment happened, even if nobody updated the&nbsp;stage.</p>
+        <p>The result: one dashboard you can trust. Real numbers. Real-time. Ready for the client&nbsp;conversation.</p>
 
         <div class="card" style="text-align:center; margin-top: 32px; background: linear-gradient(135deg, #f8f9fa, #eef2f7);">
             <h3 style="margin-bottom: 8px;">Ready to see what your data actually looks like?</h3>
-            <p style="margin:0 0 16px; color: var(--text-light);">Tell us about your business and we'll show you where the gaps are.</p>
+            <p style="margin:0 0 16px; color: var(--text-light);">Tell us about your business and we'll show you where the gaps&nbsp;are.</p>
             <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; padding: 12px 28px; background: #5abd28; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">Book a Free Strategy Call</a>
         </div>
     </div>
@@ -666,8 +666,8 @@
 <!-- Footer -->
 <div class="footer">
     <div class="container">
-        <p><strong>AGM Pro Tools</strong> — AI-Powered Growth Infrastructure for Contractors</p>
-        <p style="margin-top: 8px;">Case Study #2 — Heavenly Greens Dashboard Intelligence &bull; March 2026</p>
+        <p><strong>AGM Pro Tools</strong> — AI-Powered Growth Infrastructure for&nbsp;Contractors</p>
+        <p style="margin-top: 8px;">Case Study #2 — Heavenly Greens Dashboard Intelligence &bull; March&nbsp;2026</p>
     </div>
 </div>
 
