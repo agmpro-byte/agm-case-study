@@ -5,7 +5,7 @@
   "url": "https://casestudies.agmprotools.com/",
   "title": "Record Contamination",
   "headline": "How We Replaced Zapier and Fixed 176 Customer Records in One Session",
-  "subtitle": "Heavenly Greens \u2014 Salesforce/AGM integration overhaul"
+  "subtitle": "Heavenly Greens &mdash; Salesforce/AGM integration overhaul"
  },
  {
   "number": "2",
@@ -13,7 +13,7 @@
   "url": "https://casestudies.agmprotools.com/case-study-2-dashboard-intelligence.html",
   "title": "Dashboard Intelligence",
   "headline": "From Data Chaos to Real-Time Intelligence",
-  "subtitle": "Real-time operational dashboards"
+  "subtitle": "Live operational dashboards built on integration data"
  },
  {
   "number": "3",
@@ -21,7 +21,7 @@
   "url": "https://casestudies.agmprotools.com/case-study-3-zapier-elimination.html",
   "title": "Zapier Elimination",
   "headline": "How We Eliminated 38 Zapier Automations and Built a Self-Healing Lead Pipeline",
-  "subtitle": "The complete middleware teardown"
+  "subtitle": "The complete middleware teardown &mdash; 38 automations replaced by a pipeline that heals itself"
  },
  {
   "number": "4",
@@ -29,7 +29,7 @@
   "url": "https://casestudies.agmprotools.com/case-study-4-pestroutes-discovery.html",
   "title": "PestRoutes Discovery",
   "headline": "8,373 Customers. Zero Automation. Half Without Email.",
-  "subtitle": "8,373 customers, zero automation"
+  "subtitle": "What a platform audit found inside one pest operator&#39;s customer base"
  },
  {
   "number": "5",
@@ -37,7 +37,7 @@
   "url": "https://casestudies.agmprotools.com/case-study-5-jobber-texas-turf.html",
   "title": "The Jobber Bridge",
   "headline": "How We Connected Jobber to a Full Growth Engine &mdash; Without Replacing Anything",
-  "subtitle": "Texas Turf \u2014 growth engine without replacing anything"
+  "subtitle": "Texas Turf &mdash; speed-to-lead, reviews, and reactivation running alongside Jobber"
  },
  {
   "number": "6",
@@ -45,6 +45,6 @@
   "url": "https://casestudies.agmprotools.com/case-study-6-longitudinal-record.html",
   "title": "The Longitudinal Record",
   "headline": "The Report Their Software Couldn't Run",
-  "subtitle": "The report their software couldn't run"
+  "subtitle": "A Central Valley pest operator asked for year-over-year. The data didn&#39;t exist &mdash; so we built the record."
  }
 ]
