@@ -6,14 +6,14 @@
     <title>AGM Pro Tools — Case Study #2: Real-Time Dashboard Intelligence</title>
     <style>
         :root {
-            --primary: #0f3460;
-            --accent: #e94560;
-            --bg: #fafbfc;
-            --card-bg: #ffffff;
-            --text: #1a1a2e;
-            --text-light: #555;
-            --border: #e0e4e8;
-            --green: #27ae60;
+            --primary: #e9ede9;
+            --accent: #5abd28;
+            --bg: #090b0b;
+            --card-bg: #131614;
+            --text: #e9ede9;
+            --text-light: #9aa39b;
+            --border: rgba(255,255,255,0.10);
+            --green: #5abd28;
             --red: #e74c3c;
             --yellow: #f39c12;
             --blue: #2980b9;
@@ -30,14 +30,14 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%);
             color: white;
             padding: 80px 0 60px;
             text-align: center;
         }
         .hero-badge {
             display: inline-block;
-            background: rgba(233, 69, 96, 0.15);
+            background: rgba(90,189,40, 0.15);
             color: var(--accent);
             padding: 6px 18px;
             border-radius: 20px;
@@ -151,7 +151,7 @@
         }
 
         .fix-card {
-            background: #f0fdf4;
+            background: rgba(90,189,40,0.08);
             border: 1px solid #bbf7d0;
             border-radius: 10px;
             padding: 20px;
@@ -233,7 +233,7 @@
             font-size: 0.85rem;
         }
         .compare-table tr:nth-child(even) td {
-            background: #f8f9fa;
+            background: rgba(255,255,255,0.04);
         }
         .compare-table .before {
             color: var(--red);
@@ -324,14 +324,17 @@
             margin: 0 16px;
             transition: color 0.2s;
         }
-        .case-study-nav a:hover { color: #e94560; }
-        .case-study-nav a.active { color: #e94560; font-weight: 600; }
+        .case-study-nav a:hover { color: #5abd28; }
+        .case-study-nav a.active { color: #5abd28; font-weight: 600; }
     </style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>h1, h2, h3, .hero-stat .number { font-family: 'Space Grotesk', -apple-system, sans-serif; }</style>
 </head>
 <body>
 
 <!-- NAV -->
 <div class="case-study-nav">
+    <a href="https://agmprotools.com" style="font-weight:700;color:#5abd28;">&larr; AGM Pro Tools</a>
     <a href="index.html">Case Study #1: Record Contamination</a>
     <a href="case-study-2-dashboard-intelligence.html" class="active">Case Study #2: Dashboard Intelligence</a>
     <a href="case-study-3-zapier-elimination.html">Case Study #3: Zapier Elimination</a>
@@ -655,7 +658,7 @@
         <div class="card" style="text-align:center; margin-top: 32px; background: linear-gradient(135deg, #f8f9fa, #eef2f7);">
             <h3 style="margin-bottom: 8px;">Ready to see what your data actually looks like?</h3>
             <p style="margin:0 0 16px; color: var(--text-light);">Tell us about your business and we'll show you where the gaps are.</p>
-            <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; padding: 12px 28px; background: #4CAF50; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">Book a Free Strategy Call</a>
+            <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; padding: 12px 28px; background: #5abd28; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">Book a Free Strategy Call</a>
         </div>
     </div>
 </div>
