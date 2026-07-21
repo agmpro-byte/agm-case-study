@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGM Pro Tools &mdash; Case Study #6: The Longitudinal Record</title>
+    <style>
+        :root {
+            --primary: #0f3460;
+            --accent: #e94560;
+            --bg: #fafbfc;
+            --card-bg: #ffffff;
+            --text: #1a1a2e;
+            --text-light: #555;
+            --border: #e0e4e8;
+            --green: #27ae60;
+            --red: #e74c3c;
+            --yellow: #f39c12;
+            --blue: #2980b9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 50%, #1a1a2e 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(233, 69, 96, 0.15);
+            color: var(--accent);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            max-width: 800px;
+            margin: 0 auto 16px;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat .number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .hero-stat .label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Sections */
+        section {
+            padding: 50px 0;
+        }
+        section + section {
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 20px;
+            color: var(--text);
+            margin: 24px 0 12px;
+        }
+        p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 28px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .card.highlight {
+            border-left: 4px solid var(--accent);
+        }
+        .card.green-highlight {
+            border-left: 4px solid var(--green);
+            background: #f8fdf9;
+        }
+        .card.yellow-highlight {
+            border-left: 4px solid var(--yellow);
+            background: #fffdf5;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid var(--bg);
+        }
+        .timeline-item.resolved::before {
+            background: var(--green);
+        }
+        .timeline-item.warning::before {
+            background: var(--yellow);
+        }
+        .timeline-item h4 {
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .timeline-item p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+        }
+        th {
+            background: var(--primary);
+            color: white;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .green { color: var(--green); font-weight: 600; }
+        .red { color: var(--red); font-weight: 600; }
+        .yellow { color: var(--yellow); font-weight: 600; }
+
+        /* Value comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .comparison-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+        }
+        .comparison-card.traditional {
+            border-top: 3px solid var(--red);
+        }
+        .comparison-card.agm {
+            border-top: 3px solid var(--green);
+        }
+        .comparison-card h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+        .comparison-card .price {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 12px 0;
+        }
+        .comparison-card.traditional .price { color: var(--red); }
+        .comparison-card.agm .price { color: var(--green); }
+        .comparison-card .detail {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Metrics grid */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .metric {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .metric .value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .metric .label {
+            font-size: 12px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        /* Feature list */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        .feature-list li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+            font-size: 16px;
+        }
+        .feature-list li.missing::before {
+            content: '\2717';
+            color: var(--red);
+        }
+
+        /* Quote */
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 16px 24px;
+            margin: 20px 0;
+            background: #fef9fa;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.7);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer a { color: var(--accent); text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 28px; }
+            .hero-stats { gap: 24px; }
+            .comparison { grid-template-columns: 1fr; }
+            .hero { padding: 50px 20px 40px; }
+        }
+        /* Nav */
+        .case-study-nav {
+            background: #0a1628;
+            padding: 10px 0;
+            font-size: 13px;
+            text-align: center;
+        }
+        .case-study-nav a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            margin: 0 16px;
+            transition: color 0.2s;
+        }
+        .case-study-nav a:hover { color: #e94560; }
+        .case-study-nav a.active { color: #e94560; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="case-study-nav">
+    <a href="index.html">Case Study #1: Record Contamination</a>
+    <a href="case-study-2-dashboard-intelligence.html">Case Study #2: Dashboard Intelligence</a>
+    <a href="case-study-3-zapier-elimination.html">Case Study #3: Zapier Elimination</a>
+    <a href="case-study-4-pestroutes-discovery.html">Case Study #4: PestRoutes Discovery</a>
+    <a href="case-study-5-jobber-texas-turf.html">Case Study #5: Jobber Bridge</a>
+    <a href="case-study-6-longitudinal-record.html" class="active">Case Study #6: The Longitudinal Record</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="container">
+        <div class="hero-badge">AGM Pro Tools &mdash; Case Study</div>
+        <h1>The Report Their Software Couldn't Run</h1>
+        <p>A Central Valley pest control operator asked how this year compares to last year. The answer didn't exist &mdash; so we built the system that makes sure it always will.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="number">0 days</div>
+                <div class="label">History their platform stores</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">90 days</div>
+                <div class="label">Recoverable by reconstruction</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">9 KPIs</div>
+                <div class="label">Banked daily, permanently</div>
+            </div>
+            <div class="hero-stat">
+                <div class="number">Day 1</div>
+                <div class="label">History starts at onboarding</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+<section>
+    <h2>The Client</h2>
+    <p>A pest control operator in California's Central Valley: roughly 2,500 active customers, a recurring book north of $2M annually, and their entire operation &mdash; routing, scheduling, billing &mdash; running on one of the industry's leading practice management platforms. The platform is genuinely good at that job, and nothing in this case study changes that.</p>
+    <p>AGM Pro Tools runs their operations intelligence layer: a dashboard built on a three-times-daily sync that turns raw operational data into prioritized queues &mdash; who to collect from, who's about to churn, where the cross-sell whitespace is.</p>
+</section>
+
+<section>
+    <h2>The Question</h2>
+    <p>Looking at the scoreboard &mdash; monthly recurring revenue, active customers, cancellation rate, autopay coverage &mdash; the owner asked the most natural question in business:</p>
+    <div class="card highlight">
+        <p style="font-size: 20px; font-style: italic; margin: 0;">"Can you show me how these numbers compare to last year?"</p>
+    </div>
+    <p>Every owner assumes that answer lives in their software somewhere. It's their business. Their numbers. Surely the system that processes every invoice and every route knows what the business looked like last June.</p>
+    <p>It doesn't. And discovering exactly <em>why</em> it doesn't turned into the most important finding of the engagement.</p>
+</section>
+
+<section>
+    <h2>The Discovery</h2>
+    <p>When we went digging for the historical values to build the comparison, we found a structural truth about operational software &mdash; not a bug, not a missing feature, but a design fact that holds across the field service industry:</p>
+    <h3>Operational platforms store today. They do not store history.</h3>
+    <div class="card">
+        <ul style="color: var(--text-light); padding-left: 20px;">
+            <li style="margin-bottom: 10px;"><strong>Autopay enrollment</strong> &mdash; overwritten in place. What it was last month is gone.</li>
+            <li style="margin-bottom: 10px;"><strong>Account balances and aging</strong> &mdash; current values only. Yesterday's balance no longer exists anywhere.</li>
+            <li style="margin-bottom: 10px;"><strong>Customer status</strong> &mdash; more than 4,000 of the operator's ~6,900 inactive records carried no date for when the customer actually left.</li>
+        </ul>
+    </div>
+    <p>The platform's job is to answer "what needs to happen today?" &mdash; and it answers brilliantly. But that means "what was my MRR last June?" isn't hidden or hard to reach. It is <strong>nonexistent</strong>. No report, no export, no API call can produce a number the system never wrote down.</p>
+    <p>Every month that passes without someone recording the trend line is a month of business history erased &mdash; permanently.</p>
+</section>
+
+<section>
+    <h2>The 90-Day Reconstruction</h2>
+    <p>One partial exception: recent cancellation records still held their dates. That meant the last 90 days could be rebuilt &mdash; carefully &mdash; from raw account and subscription data.</p>
+    <p>We validated the method the honest way: we reconstructed <em>today's</em> numbers using only the raw records, then compared them against the live computed KPIs. <strong>They matched to the penny.</strong> Same formulas, same classification rules, provably correct.</p>
+    <p>That let us ship month-over-month deltas to the operator's scoreboard the same day the question was asked &mdash; every core metric now carrying a plus-or-minus against 30 days prior, color-coded by whether the movement is good news or bad. Recurring revenue: up. Active customers: down a few. Cancellation rate: a hair above the same window last month. Real answers, same day.</p>
+    <p>But 90 days was the hard ceiling. Reconstruction could buy a month of hindsight. It could never buy a year.</p>
+</section>
+
+<section>
+    <h2>What We Built</h2>
+    <p>So we changed what our platform does with the data it already syncs. Once per day, the sync now banks a permanent point-in-time record of the business &mdash; nine core numbers, written down and never overwritten:</p>
+    <div class="card">
+        <p style="margin: 0;">Monthly recurring revenue &middot; annualized book &middot; active customers &middot; active service plans &middot; net new plans &middot; cancellation rate &middot; autopay coverage &middot; route density &middot; completion rate</p>
+    </div>
+    <h3>The part that matters most: it's structural, not manual</h3>
+    <p>The history capture lives inside the sync engine itself &mdash; not in a dashboard, not in a scheduled report someone has to maintain. Nobody triggers it. Nobody remembers it. And every new client we onboard inherits it automatically from their very first sync: the longitudinal record starts on day one, with zero extra setup.</p>
+    <p>Thirty days in, every metric gets an honest month-over-month comparison from stored truth instead of reconstruction. A year in, true year-over-year &mdash; the exact question that started all this &mdash; answers itself. Forever.</p>
+</section>
+
+<section>
+    <h2>Why It Compounds</h2>
+    <p>Here is the part worth sitting with: <strong>this data cannot be backfilled.</strong> If the record starts in July, it starts in July &mdash; there is no catching up, no buying the missing months, no engineering that recovers a number nobody wrote down.</p>
+    <p>For the operator, that record becomes an asset that grows in value every single day it runs: real seasonality curves, early warning when autopay coverage starts slipping, the difference between "this summer feels better" and "this summer is 6% better." For an owner who ever sells the business, it's the operational history a buyer's diligence team wishes every target had.</p>
+    <p>Trend intelligence isn't a report you run. It's a discipline something has to be doing every single day &mdash; and now, something is.</p>
+</section>
+
+<section>
+    <h2>Results</h2>
+    <div class="card green-highlight">
+        <ul style="color: var(--text-light); padding-left: 20px;">
+            <li style="margin-bottom: 10px;"><strong>Same-day answer:</strong> month-over-month deltas on every scoreboard metric, shipped the day the owner asked &mdash; validated against live data to the penny.</li>
+            <li style="margin-bottom: 10px;"><strong>Permanent fix:</strong> a daily nine-metric longitudinal record, banked automatically by the sync engine, monitored so a single missed day surfaces the same morning.</li>
+            <li style="margin-bottom: 10px;"><strong>Every future client covered:</strong> history capture is part of onboarding itself &mdash; day one of any new engagement is day one of that operator's permanent record.</li>
+            <li style="margin-bottom: 10px;"><strong>No platform switch, no disruption:</strong> the operator's routing software stays exactly where it is, doing exactly what it does well.</li>
+        </ul>
+    </div>
+</section>
+
+<section style="text-align: center; background: linear-gradient(135deg, #0f3460 0%, #16213e 100%); border-radius: 12px; padding: 50px 30px; margin: 40px 0; border-top: none;">
+    <h2 style="color: white;">Could Your Software Answer the Question?</h2>
+    <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">If you wanted to compare this month to the same month last year &mdash; real numbers, not memory &mdash; could you? For most field service operators the honest answer is no, and the meter is running. AGM Pro Tools puts the recording layer alongside the software you already run.</p>
+    <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We remember what they forget.</p>
+    <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; margin-top: 24px; padding: 14px 32px; background: #4CAF50; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Book a Free Strategy Call</a>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <div class="container">
+        <p>AGM Pro Tools &mdash; Enterprise Integration for Field Service</p>
+        <p style="margin-top: 8px;"><a href="https://agmprotools.com" style="color: rgba(255,255,255,0.6);">agmprotools.com</a></p>
+        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on live integration engineering &mdash; July 2026 &middot; Client anonymized</p>
+    </div>
+</div>
+
+</body>
+</html>
