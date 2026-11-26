@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGM Pro Tools — Case Study #2: Real-Time Dashboard Intelligence</title>
+    <title>AGM Pro Tools &mdash; Case Study: The Dashboard Said 3</title>
+    <meta name="description" content="Heavenly Greens' sales dashboard showed 1 appointment set when there were 8, and 3 run when there were 30. How it went wrong and how to check your own.">
+    <link rel="canonical" href="https://casestudies.agmprotools.com/case-study-2-dashboard-intelligence.html">
     <style>
         :root {
             --primary: #e9ede9;
@@ -15,20 +17,37 @@
             --border: rgba(255,255,255,0.10);
             --green: #5abd28;
             --red: #e74c3c;
-            --yellow: #f39c12;
-            --blue: #2980b9;
-            --purple: #8b5cf6;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
+            font-size: 18px;
         }
+        a { color: var(--accent); }
 
+        /* Nav */
+        .case-study-nav {
+            background: #0a1628;
+            padding: 10px 16px;
+            font-size: 13px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 28px;
+        }
+        .case-study-nav a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .case-study-nav a:hover { color: #5abd28; }
+        .case-study-nav a.active { color: #5abd28; font-weight: 600; }
+        .case-study-nav a.home { color: #5abd28; font-weight: 700; }
+
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%);
             color: white;
@@ -48,17 +67,16 @@
             margin-bottom: 20px;
         }
         .hero h1 {
-            font-size: 2.4rem;
+            font-size: 42px;
             font-weight: 700;
-            margin-bottom: 16px;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto 16px;
+            line-height: 1.2;
         }
         .hero p {
-            font-size: 1.15rem;
-            opacity: 0.85;
-            max-width: 600px;
+            font-size: 18px;
+            color: rgba(255,255,255,0.7);
+            max-width: 650px;
             margin: 0 auto;
         }
         .hero-stats {
@@ -68,608 +86,286 @@
             margin-top: 40px;
             flex-wrap: wrap;
         }
-        .hero-stat {
-            text-align: center;
-        }
-        .hero-stat .num {
-            font-size: 2.2rem;
-            font-weight: 800;
+        .hero-stat { text-align: center; max-width: 190px; }
+        .hero-stat .number {
+            font-size: 36px;
+            font-weight: 700;
             color: var(--accent);
+            line-height: 1.3;
         }
         .hero-stat .label {
-            font-size: 0.8rem;
-            opacity: 0.7;
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.5;
         }
 
+        /* Layout */
         .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 50px 0; }
+        section + section { border-top: 1px solid var(--border); }
+        h2 { font-size: 28px; color: var(--primary); margin-bottom: 20px; line-height: 1.3; }
+        h3 { font-size: 20px; color: var(--text); margin: 24px 0 12px; }
+        p { color: var(--text-light); margin-bottom: 16px; }
+        strong { color: var(--text); }
 
-        .section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .section:last-child { border-bottom: none; }
-        .section-label {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-        .section h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        .section p {
-            color: var(--text-light);
-            margin-bottom: 16px;
-        }
-
+        /* Cards */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 28px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            margin: 20px 0;
         }
-        .card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: var(--primary);
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 24px;
-        }
-        @media (max-width: 640px) {
-            .problem-grid { grid-template-columns: 1fr; }
-        }
-
-        .problem-card {
-            background: rgba(231,76,60,0.08);
-            border: 1px solid #fecaca;
-            border-radius: 10px;
-            padding: 20px;
-        }
-        .problem-card h4 {
-            color: var(--red);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-        }
-        .problem-card p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin: 0;
-        }
-
-        .fix-card {
-            background: rgba(90,189,40,0.08);
-            border: 1px solid #bbf7d0;
-            border-radius: 10px;
-            padding: 20px;
-        }
-        .fix-card h4 {
-            color: var(--green);
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-        }
-        .fix-card p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin: 0;
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 32px;
-            margin-top: 24px;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 28px;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -28px;
-            top: 6px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--accent);
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--accent);
-        }
-        .timeline-item .time {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .timeline-item h4 {
-            font-size: 1rem;
-            margin: 4px 0 6px;
-            color: var(--primary);
-        }
-        .timeline-item p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin: 0;
-        }
-
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .compare-table th {
-            background: #0d0f0e;
-            color: white;
-            padding: 12px 16px;
-            text-align: left;
-            font-size: 0.85rem;
-        }
-        .compare-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-            font-size: 0.85rem;
-        }
-        .compare-table tr:nth-child(even) td {
-            background: rgba(255,255,255,0.04);
-        }
-        .compare-table .before {
-            color: var(--red);
-            font-weight: 600;
-        }
-        .compare-table .after {
-            color: var(--green);
-            font-weight: 600;
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-top: 24px;
-        }
-        @media (max-width: 640px) {
-            .results-grid { grid-template-columns: 1fr; }
-        }
-        .result-card {
-            text-align: center;
+        .card.highlight { border-left: 4px solid var(--accent); }
+        .card.green-highlight { border-left: 4px solid var(--green); background: rgba(90,189,40,0.08); }
+        .card h3 { margin-top: 0; color: var(--primary); }
+        .card p:last-child { margin-bottom: 0; }
+        .disclosure {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 24px 16px;
-        }
-        .result-card .num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        .result-card .label {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            margin-top: 4px;
-        }
-
-        .quote {
-            background: linear-gradient(135deg, #f8f9fa, #eef2f7);
             border-left: 4px solid var(--accent);
-            padding: 24px 28px;
-            border-radius: 0 10px 10px 0;
-            margin: 24px 0;
-            font-style: italic;
-            color: var(--text);
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-        .quote-attr {
-            font-style: normal;
-            font-size: 0.8rem;
+            border-radius: 10px;
+            padding: 18px 24px;
+            font-size: 16px;
             color: var(--text-light);
-            margin-top: 8px;
         }
+        .disclosure strong { color: var(--text); }
 
-        .footer {
+        /* Lists */
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li {
+            padding: 8px 0 8px 28px;
+            position: relative;
+            color: var(--text-light);
+        }
+        .feature-list li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--green);
+            font-weight: 700;
+        }
+        ol.steps { padding-left: 24px; color: var(--text-light); }
+        ol.steps li { margin-bottom: 10px; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 16px; }
+        th {
             background: #0d0f0e;
             color: white;
-            padding: 40px 0;
-            text-align: center;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
         }
-        .footer p {
-            opacity: 0.7;
-            font-size: 0.85rem;
+        td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-light); vertical-align: top; }
+        tr:nth-child(even) td { background: rgba(255,255,255,0.04); }
+        td.before { color: var(--red); font-weight: 600; white-space: nowrap; }
+        td.after { color: var(--green); font-weight: 600; white-space: nowrap; }
+
+        /* Quote */
+        blockquote {
+            border-left: 3px solid var(--accent);
+            padding: 16px 24px;
+            margin: 20px 0;
+            background: rgba(90,189,40,0.06);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text);
         }
-        .footer a {
-            color: var(--accent);
-            text-decoration: none;
+        blockquote .attr { display: block; font-style: normal; font-size: 14px; color: var(--text-light); margin-top: 8px; }
+
+        /* Source line */
+        .source {
+            font-size: 13px;
+            color: var(--text-light);
+            opacity: 0.85;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+            margin-top: 28px;
+            line-height: 1.6;
         }
 
-        @media print {
-            .hero { padding: 40px 0 30px; }
-            .hero h1 { font-size: 1.8rem; }
-            .section { padding: 30px 0; }
-            body { font-size: 11pt; }
-            .card { box-shadow: none; border: 1px solid #ccc; }
-        }
-        /* Nav */
-        .case-study-nav {
-            background: #0a1628;
-            padding: 10px 0;
-            font-size: 13px;
-            text-align: center;
-        }
-        .case-study-nav a {
-            color: rgba(255,255,255,0.5);
+        /* Study cards (index) */
+        .study-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+        .study-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--accent);
+            border-radius: 10px;
+            padding: 24px;
             text-decoration: none;
-            margin: 0 16px;
-            transition: color 0.2s;
+            color: inherit;
+            transition: border-color 0.2s, transform 0.2s;
         }
-        .case-study-nav a:hover { color: #5abd28; }
-        .case-study-nav a.active { color: #5abd28; font-weight: 600; }
+        .study-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .study-card .who {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .study-card h3 { margin: 0 0 10px; font-size: 22px; color: var(--primary); line-height: 1.3; }
+        .study-card p { font-size: 16px; margin-bottom: 16px; flex: 1; }
+        .study-card .read { font-size: 15px; font-weight: 600; color: var(--accent); }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .cta h2 { color: white; }
+        .cta p { color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 16px; }
+        .button {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 14px 32px;
+            background: #5abd28;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0d0f0e;
+            color: rgba(255,255,255,0.7);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 13px;
+        }
+        .footer p { color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+        .footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 50px 0 40px; }
+            .hero h1 { font-size: 30px; }
+            .hero-stats { gap: 24px; }
+            .hero-stat .number { font-size: 30px; }
+            .study-cards { grid-template-columns: 1fr; }
+            h2 { font-size: 24px; }
+            .card { padding: 22px; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            th, td { padding: 8px 10px; font-size: 15px; }
+            td.before, td.after { white-space: normal; }
+        }
     </style>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<style>h1, h2, h3, .hero-stat .number { font-family: 'Space Grotesk', -apple-system, sans-serif; } body { font-size: 18px; } .card ul, .card ol { font-size: 18px; } p, li { text-wrap: pretty; } h1, h2, h3 { text-wrap: balance; }</style>
+<style>h1, h2, h3, .hero-stat .number { font-family: 'Space Grotesk', -apple-system, sans-serif; } p, li { text-wrap: pretty; } h1, h2, h3 { text-wrap: balance; }</style>
 </head>
 <body>
 
-<!-- NAV -->
-<div class="case-study-nav">
-    <a href="https://agmprotools.com" style="font-weight:700;color:#5abd28;">&larr; AGM Pro Tools</a>
-    <a href="index.html">Case Study #1: Record Contamination</a>
-    <a href="case-study-2-dashboard-intelligence.html" class="active">Case Study #2: Dashboard Intelligence</a>
-    <a href="case-study-3-zapier-elimination.html">Case Study #3: Zapier Elimination</a>
-    <a href="case-study-4-pestroutes-discovery.html">Case Study #4: PestRoutes Discovery</a>
-    <a href="case-study-5-jobber-texas-turf.html">Case Study #5: Jobber Bridge</a>
-    <a href="case-study-6-longitudinal-record.html">Case Study #6: The Longitudinal Record</a>
-</div>
+<nav class="case-study-nav" aria-label="Case studies">
+    <a class="home" href="https://agmprotools.com">&larr; AGM Pro Tools</a>
+    <a href="case-study-7-replacing-seven-tools.html">Replacing seven tools</a>
+    <a href="case-study-8-unbilled-work.html">$80,000 never billed</a>
+    <a href="case-study-2-dashboard-intelligence.html" class="active">The dashboard said 3</a>
+    <a href="case-study-6-longitudinal-record.html">A year of history</a>
+</nav>
 
-<!-- Hero -->
-<div class="hero">
+<header class="hero">
     <div class="container">
-        <div class="hero-badge">Case Study #2</div>
-        <h1>From Data Chaos to Real-Time Intelligence</h1>
-        <p>How AGM Pro Tools unified three disconnected systems into a single live dashboard — in one&nbsp;session.</p>
+        <div class="hero-badge">Heavenly Greens &mdash; Case Study</div>
+        <h1>The dashboard said 3. The top rep ran&nbsp;30.</h1>
+        <p>One evening in March 2026, Troy opened Heavenly Greens&rsquo; sales dashboard and said, &ldquo;This cannot be correct.&rdquo; He was&nbsp;right.</p>
         <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="num">3</div>
-                <div class="label">Systems Unified</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num">5 min</div>
-                <div class="label">Data Refresh</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num">18</div>
-                <div class="label">Sales Tracked</div>
-            </div>
-            <div class="hero-stat">
-                <div class="num">$154K</div>
-                <div class="label">Revenue Visible</div>
-            </div>
+            <div class="hero-stat"><div class="number">1 &rarr; 8</div><div class="label">Appointments set that week</div></div>
+            <div class="hero-stat"><div class="number">3 &rarr; 30</div><div class="label">Appointments run that month</div></div>
+            <div class="hero-stat"><div class="number">16 &rarr; 18</div><div class="label">Sales</div></div>
         </div>
     </div>
-</div>
+</header>
 
-<!-- The Client -->
-<div class="section">
+<section>
     <div class="container">
-        <div class="section-label">The Client</div>
-        <h2>Heavenly Greens Artificial Turf</h2>
-        <p>Heavenly Greens is a Northern California artificial turf installer serving the Bay Area through a Costco partnership program. Leads flow in through CENTAH (Costco's call center), appointments are set and run by a dedicated sales rep, and jobs are managed across multiple&nbsp;platforms.</p>
-        <div class="card">
-            <h3>The Tech Stack (Before AGM Pro Tools)</h3>
-            <p style="margin:0">
-                <strong>Salesforce</strong> — CRM, lead tracking, opportunity stages, appointment scheduling<br>
-                <strong>AGM (GoHighLevel)</strong> — Pipeline management, contact records, custom fields, workflow automation<br>
-                <strong>CENTAH / M365</strong> — Costco lead intake emails, call center notes<br>
-                <strong>Zapier</strong> — 42 automations gluing the systems together (previously; 4 replaced, 38 pending)
-            </p>
-        </div>
+        <p class="disclosure"><strong>Who&rsquo;s who:</strong> Troy Scott owns AGM Pro Tools and is a partner in Heavenly Greens. This is our own company&rsquo;s story, told with its own&nbsp;numbers.</p>
     </div>
-</div>
+</section>
 
-<!-- The Problem -->
-<div class="section">
+<section>
     <div class="container">
-        <div class="section-label">The Problem</div>
-        <h2>"How many appointments did we run this week?"</h2>
-        <p>A question any contractor should be able to answer in seconds. For Heavenly Greens, it required stitching together data from three separate systems — and the answer was still&nbsp;wrong.</p>
-
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h4>Stale Dashboard Data</h4>
-                <p>The Costco pipeline dashboard hadn't refreshed in over 24 hours. No automated refresh existed — data only updated when someone manually ran a&nbsp;script.</p>
-            </div>
-            <div class="problem-card">
-                <h4>Wrong Sold Count</h4>
-                <p>Dashboard showed 16 sales. The actual number was 18. Two sales were invisible because AGM's pipeline stage names didn't match the dashboard's lookup&nbsp;table.</p>
-            </div>
-            <div class="problem-card">
-                <h4>Missing Product Data</h4>
-                <p>The Shaw Turf Products breakdown — which products were sold, how much square footage, at what revenue — was completely empty. Wrong custom field ID in the API&nbsp;query.</p>
-            </div>
-            <div class="problem-card">
-                <h4>Phantom Appointment Counts</h4>
-                <p>Appointments "set this week" showed 1. The real number was 8. Appointments "ran this month" showed 3. The real number was 30. The dashboard was counting by lead creation date, not actual appointment&nbsp;date.</p>
-            </div>
-        </div>
-
-        <div class="quote">
-            "You're way smarter than me, and my brain is catching the gaps. Don't you find that to be a conundrum?"
-            <div class="quote-attr">— Troy Scott, Founder, AGM Pro Tools</div>
-        </div>
+        <h2>How it looked then</h2>
+        <p>In March 2026, Heavenly Greens tracked its sales in Salesforce, while its leads and pipeline stages lived in a second system. The sales dashboard had to stitch the two together, and the two didn&rsquo;t agree on basic&nbsp;facts.</p>
+        <p>That changed on October 5, 2026, when new sales stopped going through Salesforce. The lesson from that evening&nbsp;didn&rsquo;t.</p>
     </div>
-</div>
+</section>
 
-<!-- The Root Causes -->
-<div class="section">
+<section>
     <div class="container">
-        <div class="section-label">Root Cause Analysis</div>
-        <h2>Five Systems, Zero Agreement</h2>
-        <p>Every data point on the dashboard required reconciling information from multiple sources. Each source used different field names, different stage names, and different date&nbsp;conventions.</p>
-
-        <div class="card">
-            <h3>The Mismatches We Found</h3>
-            <table class="compare-table">
-                <tr>
-                    <th>Data Point</th>
-                    <th>Salesforce Says</th>
-                    <th>AGM Says</th>
-                    <th>Dashboard Showed</th>
-                </tr>
-                <tr>
-                    <td>One customer's status</td>
-                    <td>"1st Presentation Set"</td>
-                    <td>"Proposal/Contract Approved"</td>
-                    <td class="before">"Appointment Booked" (wrong)</td>
-                </tr>
-                <tr>
-                    <td>Pipeline stage name</td>
-                    <td>N/A</td>
-                    <td>"Proposal/Contract Approved"</td>
-                    <td class="before">Not recognized (expected "Contract Approved")</td>
-                </tr>
-                <tr>
-                    <td>Shaw Products field</td>
-                    <td>N/A</td>
-                    <td>Field ID: AytQaekFFJOfbIZQRS2a</td>
-                    <td class="before">Querying wrong ID (bMsGjVxsVlc05ZCekUyJ)</td>
-                </tr>
-                <tr>
-                    <td>Appointment dates</td>
-                    <td>Next_Appointment_Date__c</td>
-                    <td>Not tracked</td>
-                    <td class="before">Using lead CreatedDate instead</td>
-                </tr>
-                <tr>
-                    <td>"Appointments ran"</td>
-                    <td>30 past appointment dates</td>
-                    <td>Only 4 at post-appointment stages</td>
-                    <td class="before">3 (using AGM stage, not SF date)</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
-
-<!-- The Fix -->
-<div class="section">
-    <div class="container">
-        <div class="section-label">The Fix</div>
-        <h2>One Session. Every Number Corrected.</h2>
-
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="time">Problem Identified</div>
-                <h4>Dashboard data was 24+ hours stale</h4>
-                <p>No automated refresh existed. The generation script ran locally, required manual execution, and wrote to a static JSON file on GitHub&nbsp;Pages.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="time">Fix Deployed</div>
-                <h4>Live API endpoint with 5-minute auto-refresh</h4>
-                <p>Moved data generation to a cloud function (Modal) running every 5 minutes. Dashboard now fetches live from the API endpoint. Fallback to static JSON if the endpoint is&nbsp;down.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="time">Problem Identified</div>
-                <h4>Sold count wrong: 16 instead of 18</h4>
-                <p>AGM pipeline stages use names like "Proposal/Contract Approved" and "Total Collected (Paid in Full)" — the dashboard only recognized "Contract Approved" and "Paid in Full." Two sales&nbsp;invisible.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="time">Fix Deployed</div>
-                <h4>Complete AGM stage map — all 12 stages mapped</h4>
-                <p>Pulled the actual pipeline stage names from the AGM API and mapped every one. Dashboard picks the more progressed status between SF and AGM. A customer's $4,700 sale immediately&nbsp;appeared.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="time">Problem Identified</div>
-                <h4>Shaw Turf Products card empty</h4>
-                <p>The API query was using the wrong custom field ID. "Costco - Shaw Turf Products" lives at field AytQaekFFJOfbIZQRS2a — the code was querying a non-existent&nbsp;field.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="time">Fix Deployed</div>
-                <h4>Correct field IDs + live API fallback</h4>
-                <p>Fixed the Shaw Products field ID. Added live AGM API calls as fallback when local cache files don't exist (cloud environment). Product breakdown restored: Foundations Freedom, K9 Park,&nbsp;etc.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="time">Problem Identified</div>
-                <h4>Appointment counts completely wrong</h4>
-                <p>"Appointments set this week: 1" — actual: 8. "Appointments ran this month: 3" — actual: 30. The dashboard was using lead creation date, not the actual appointment date from&nbsp;Salesforce.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="time">Fix Deployed</div>
-                <h4>Real appointment dates from SF + new activity rows</h4>
-                <p>Added Next_Appointment_Date__c from Salesforce opportunities. New dashboard rows: Appointments Set Today/This Week/This Month + Appointments Ran This Month. Numbers now match the top sales rep's actual&nbsp;schedule.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Before / After -->
-<div class="section">
-    <div class="container">
-        <div class="section-label">Before & After</div>
-        <h2>The Same Dashboard, Corrected</h2>
-
-        <table class="compare-table">
-            <tr>
-                <th>Metric</th>
-                <th>Before</th>
-                <th>After</th>
-            </tr>
-            <tr>
-                <td>Data freshness</td>
-                <td class="before">24+ hours stale (manual refresh)</td>
-                <td class="after">5-minute auto-refresh (live API)</td>
-            </tr>
-            <tr>
-                <td>Sales tracked</td>
-                <td class="before">16 (missed 2 sales)</td>
-                <td class="after">18 (all accounted for)</td>
-            </tr>
-            <tr>
-                <td>Revenue visible</td>
-                <td class="before">$149,029</td>
-                <td class="after">$154,353</td>
-            </tr>
-            <tr>
-                <td>Shaw product breakdown</td>
-                <td class="before">Empty (wrong field ID)</td>
-                <td class="after">Foundations Freedom: 4 jobs, K9 Park: 1 job</td>
-            </tr>
-            <tr>
-                <td>Appts set this week</td>
-                <td class="before">1 (using wrong date field)</td>
-                <td class="after">8 (real SF appointment dates)</td>
-            </tr>
-            <tr>
-                <td>Appts ran this month</td>
-                <td class="before">3 (required stage change)</td>
-                <td class="after">30 (past appointment date = ran)</td>
-            </tr>
-            <tr>
-                <td>Lead list order</td>
-                <td class="before">Unsorted</td>
-                <td class="after">Alphabetical by last name</td>
-            </tr>
-            <tr>
-                <td>Lead activity tracking</td>
-                <td class="before">None</td>
-                <td class="after">Today / This Week / This Month</td>
-            </tr>
+        <h2>What the screen said, and what was real</h2>
+        <table>
+            <tr><th>Number</th><th>Dashboard said</th><th>Real</th></tr>
+            <tr><td>Appointments set that week</td><td class="before">1</td><td class="after">8</td></tr>
+            <tr><td>Appointments run that month</td><td class="before">3</td><td class="after">30</td></tr>
+            <tr><td>Sales</td><td class="before">16</td><td class="after">18</td></tr>
+            <tr><td>How old the data was</td><td class="before">24+ hours</td><td class="after">5 minutes</td></tr>
         </table>
+        <h3>Why the numbers were wrong</h3>
+        <p>Nothing was broken in an obvious way. The dashboard counted appointments by the date the lead came in, not the date of the appointment. One sales stage was named slightly differently in the two systems, so two sales never made it onto the screen. And nothing refreshed the data on its own; it was only as fresh as the last time someone ran it by&nbsp;hand.</p>
     </div>
-</div>
+</section>
 
-<!-- Why This Matters -->
-<div class="section">
+<section>
     <div class="container">
-        <div class="section-label">Why This Matters</div>
-        <h2>Every Contractor Running Multiple Systems Has This Problem</h2>
-
-        <div class="problem-grid">
-            <div class="fix-card">
-                <h4>For the Owner</h4>
-                <p>You can't manage what you can't measure. If your dashboard says 3 appointments ran this month when the real number is 30, every decision you make about sales staffing, marketing spend, and revenue forecasting is&nbsp;wrong.</p>
-            </div>
-            <div class="fix-card">
-                <h4>For the Sales Team</h4>
-                <p>The top sales rep ran 30 appointments this month. The dashboard said 3. That's not just a data bug — it's a morale problem. Your best performer's work was&nbsp;invisible.</p>
-            </div>
-            <div class="fix-card">
-                <h4>For the Client Conversation</h4>
-                <p>When you're sitting across from a Costco member showing them your pipeline and the numbers are wrong, you lose credibility. Real-time data isn't a feature — it's table&nbsp;stakes.</p>
-            </div>
-            <div class="fix-card">
-                <h4>For the Business</h4>
-                <p>Three systems that don't talk to each other means three sources of truth — which means zero sources of truth. Every manual reconciliation is time spent not selling, not installing, not&nbsp;growing.</p>
-            </div>
+        <h2>Why it mattered</h2>
+        <div class="card">
+            <h3>For the owner</h3>
+            <p>If the dashboard says 3 appointments ran this month and the real number is 30, every call about staffing, marketing and forecasting is made on the wrong&nbsp;picture.</p>
         </div>
-
-        <div class="quote">
-            "This thing is only thirteen days old. We can't expect it overnight, right?"
-            <div class="quote-attr">— Troy Scott, on the AGM Pro Tools system continuously improving through real-world use</div>
+        <div class="card">
+            <h3>For the sales team</h3>
+            <p>The top sales rep ran 30 appointments that month. The dashboard said 3. The best performer&rsquo;s work was&nbsp;invisible.</p>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Results -->
-<div class="section">
+<section>
     <div class="container">
-        <div class="section-label">Results</div>
-        <h2>Delivered in One Session</h2>
-
-        <div class="results-grid">
-            <div class="result-card">
-                <div class="num">3 → 1</div>
-                <div class="label">Data sources unified into one dashboard</div>
-            </div>
-            <div class="result-card">
-                <div class="num">24h → 5m</div>
-                <div class="label">Data refresh interval</div>
-            </div>
-            <div class="result-card">
-                <div class="num">8</div>
-                <div class="label">Data accuracy issues fixed</div>
-            </div>
-            <div class="result-card">
-                <div class="num">$5,324</div>
-                <div class="label">Revenue that was invisible, now tracked</div>
-            </div>
-            <div class="result-card">
-                <div class="num">30</div>
-                <div class="label">Appointments now accurately counted</div>
-            </div>
-            <div class="result-card">
-                <div class="num">$0</div>
-                <div class="label">Downtime during the fix</div>
-            </div>
-        </div>
+        <h2>What we changed that night</h2>
+        <ul class="feature-list">
+            <li>Appointments were counted by the date of the appointment, taken from the sales&nbsp;record.</li>
+            <li>Every pipeline stage was mapped by its exact name, so no sale could fall through a naming&nbsp;gap.</li>
+            <li>The dashboard refreshed itself every five minutes instead of waiting for someone to run&nbsp;it.</li>
+            <li>The numbers matched the top sales rep&rsquo;s actual&nbsp;calendar.</li>
+        </ul>
+        <h3>The same month, a different symptom</h3>
+        <p>Earlier that March, the same two systems had disagreed somewhere worse: on documents customers signed. An old automation linking them was writing job details into customers&rsquo; names, so a signed form could show the job&rsquo;s description stuck to the end of the customer&rsquo;s name. We traced it, replaced the automation, and corrected <strong>176 contact&nbsp;records</strong>.</p>
     </div>
-</div>
+</section>
 
-<!-- The Bigger Picture -->
-<div class="section">
+<section>
     <div class="container">
-        <div class="section-label">The Bigger Picture</div>
-        <h2>This Is Why AGM Pro Tools Exists</h2>
-        <p>Heavenly Greens isn't unusual. Every contractor running Salesforce, ServiceTitan, Jobber, Housecall Pro, or Field Routes alongside a CRM has this exact problem: systems that don't agree on basic&nbsp;facts.</p>
-        <p>AGM Pro Tools doesn't just connect your systems — it <strong>reconciles</strong> them. It understands that "Proposal/Contract Approved" in AGM means the same thing as "Sales Closed Won" in Salesforce. It knows that an appointment date in the past means the appointment happened, even if nobody updated the&nbsp;stage.</p>
-        <p>The result: one dashboard you can trust. Real numbers. Real-time. Ready for the client&nbsp;conversation.</p>
-
-        <div class="card" style="text-align:center; margin-top: 32px; background: linear-gradient(135deg, #f8f9fa, #eef2f7);">
-            <h3 style="margin-bottom: 8px;">Ready to see what your data actually looks like?</h3>
-            <p style="margin:0 0 16px; color: var(--text-light);">Tell us about your business and we'll show you where the gaps&nbsp;are.</p>
-            <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; padding: 12px 28px; background: #5abd28; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 15px;">Book a Free Strategy Call</a>
-        </div>
+        <h2>What you can take from it, with or without our software</h2>
+        <blockquote>Before you act on any number on a dashboard, ask how it&rsquo;s calculated. Then check one by hand: count last week&rsquo;s appointments on the calendar and compare. If they don&rsquo;t match, the screen is&nbsp;guessing.</blockquote>
+        <p class="source">Source: AGM Pro Tools&rsquo; engineering records of the March 26, 2026 dashboard session (the appointment, sales and refresh numbers) and the March 20, 2026 records session (the 176 contact records). No customer or staff names are&nbsp;used.</p>
     </div>
-</div>
+</section>
 
-<!-- Footer -->
-<div class="footer">
+<section class="cta">
     <div class="container">
-        <p><strong>AGM Pro Tools</strong> — AI-Powered Growth Infrastructure for&nbsp;Contractors</p>
-        <p style="margin-top: 8px;">Case Study #2 — Heavenly Greens Dashboard Intelligence &bull; March&nbsp;2026</p>
+        <h2>AGM Pro Tools</h2>
+        <p>We built AGM Pro Tools to run our own turf company, Heavenly Greens. It works alongside the software a field-service business already runs, watches where those systems meet, and tells each person what needs doing&nbsp;next.</p>
+        <a class="button" href="https://agmprotools.com/booking" target="_blank" rel="noopener">Book a Free Strategy Call</a>
     </div>
-</div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <p>AGM Pro Tools &mdash; operational intelligence for field-service&nbsp;businesses</p>
+        <p><a href="index.html">All case studies</a> &middot; <a href="https://agmprotools.com">agmprotools.com</a></p>
+        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on live engineering sessions &mdash; March 2026 &middot; Updated November&nbsp;2026</p>
+    </div>
+</footer>
 
 </body>
 </html>
