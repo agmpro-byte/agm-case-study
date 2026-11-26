@@ -1,50 +1,58 @@
 [
  {
   "number": "1",
-  "file": "index.html",
-  "url": "https://casestudies.agmprotools.com/",
-  "title": "Record Contamination",
-  "headline": "How We Replaced Zapier and Fixed 176 Customer Records in One Session",
-  "subtitle": "Heavenly Greens &mdash; Salesforce/AGM integration overhaul"
+  "file": "case-study-7-replacing-seven-tools.html",
+  "url": "https://casestudies.agmprotools.com/case-study-7-replacing-seven-tools.html",
+  "title": "3 years. 2 decisions. 1 piece of software.",
+  "headline": "3 years. 2 decisions. 1 piece of software.",
+  "subtitle": "How one system is replacing seven tools, and over $100,000 a year of software, at Heavenly Greens."
  },
  {
   "number": "2",
-  "file": "case-study-2-dashboard-intelligence.html",
-  "url": "https://casestudies.agmprotools.com/case-study-2-dashboard-intelligence.html",
-  "title": "Dashboard Intelligence",
-  "headline": "From Data Chaos to Real-Time Intelligence",
-  "subtitle": "Live operational dashboards built on integration data"
+  "file": "case-study-9-hidden-missed-call.html",
+  "url": "https://casestudies.agmprotools.com/case-study-9-hidden-missed-call.html",
+  "title": "The auto-text that hid the missed call.",
+  "headline": "Six calls in twenty minutes. She never reached the call-back list.",
+  "subtitle": "Six calls in twenty minutes, and the call-back board never saw her."
  },
  {
   "number": "3",
-  "file": "case-study-3-zapier-elimination.html",
-  "url": "https://casestudies.agmprotools.com/case-study-3-zapier-elimination.html",
-  "title": "Zapier Elimination",
-  "headline": "How We Eliminated 38 Zapier Automations and Built a Self-Healing Lead Pipeline",
-  "subtitle": "The complete middleware teardown &mdash; 38 automations replaced by a pipeline that heals itself"
+  "file": "case-study-2-dashboard-intelligence.html",
+  "url": "https://casestudies.agmprotools.com/case-study-2-dashboard-intelligence.html",
+  "title": "The dashboard said 3. The top rep ran 30.",
+  "headline": "The dashboard said 3. The top rep ran 30.",
+  "subtitle": "Three systems, zero agreement, and a sales dashboard nobody could trust."
  },
  {
   "number": "4",
-  "file": "case-study-4-pestroutes-discovery.html",
-  "url": "https://casestudies.agmprotools.com/case-study-4-pestroutes-discovery.html",
-  "title": "PestRoutes Discovery",
-  "headline": "8,373 Customers. Zero Automation. Half Without Email.",
-  "subtitle": "What a platform audit found inside one pest operator&#39;s customer base"
+  "file": "case-study-8-unbilled-work.html",
+  "url": "https://casestudies.agmprotools.com/case-study-8-unbilled-work.html",
+  "title": "About $80,000 owed on jobs we'd already finished.",
+  "headline": "About $80,000 owed on jobs we'd already finished.",
+  "subtitle": "Nothing on the board said collect. The first count found 41 finished jobs not paid in full."
  },
  {
   "number": "5",
-  "file": "case-study-5-jobber-texas-turf.html",
-  "url": "https://casestudies.agmprotools.com/case-study-5-jobber-texas-turf.html",
-  "title": "The Jobber Bridge",
-  "headline": "How We Connected Jobber to a Full Growth Engine &mdash; Without Replacing Anything",
-  "subtitle": "Texas Turf &mdash; speed-to-lead, reviews, and reactivation running alongside Jobber"
+  "file": "case-study-10-kitchen-table-contract.html",
+  "url": "https://casestudies.agmprotools.com/case-study-10-kitchen-table-contract.html",
+  "title": "The contract that failed at the kitchen table.",
+  "headline": "The contract that failed at the kitchen table.",
+  "subtitle": "A blank screen in April. Ten contracts worth $140,620 in one week in September."
  },
  {
   "number": "6",
+  "file": "case-study-11-retyped-contract.html",
+  "url": "https://casestudies.agmprotools.com/case-study-11-retyped-contract.html",
+  "title": "The wrong turf went out because someone retyped the contract.",
+  "headline": "The wrong turf went out because someone retyped the contract.",
+  "subtitle": "Every retype is a place for it to go wrong. Now the sheet fills itself from the contract."
+ },
+ {
+  "number": "7",
   "file": "case-study-6-longitudinal-record.html",
   "url": "https://casestudies.agmprotools.com/case-study-6-longitudinal-record.html",
-  "title": "The Longitudinal Record",
-  "headline": "The Report Their Software Couldn't Run",
-  "subtitle": "A Central Valley pest operator asked for year-over-year. The data didn&#39;t exist &mdash; so we built the record."
+  "title": "The report their software couldn't run.",
+  "headline": "The report their software couldn't run",
+  "subtitle": "A pest-control operator asked how this year compared to last. The history didn't exist."
  }
 ]

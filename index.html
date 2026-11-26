@@ -1,677 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AGM Pro Tools — Case Study: Heavenly Greens Salesforce/AGM Integration Overhaul</title>
-    <style>
-        :root {
-            --primary: #e9ede9;
-            --accent: #5abd28;
-            --bg: #090b0b;
-            --card-bg: #131614;
-            --text: #e9ede9;
-            --text-light: #9aa39b;
-            --border: rgba(255,255,255,0.10);
-            --green: #5abd28;
-            --red: #e74c3c;
-            --yellow: #f39c12;
-            --blue: #2980b9;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%);
-            color: white;
-            padding: 80px 0 60px;
-            text-align: center;
-        }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(90,189,40, 0.15);
-            color: var(--accent);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 700;
-            max-width: 800px;
-            margin: 0 auto 16px;
-            line-height: 1.2;
-        }
-        .hero p {
-            font-size: 18px;
-            color: rgba(255,255,255,0.7);
-            max-width: 650px;
-            margin: 0 auto;
-        }
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-        .hero-stat {
-            text-align: center;
-        }
-        .hero-stat .number {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        .hero-stat .label {
-            font-size: 13px;
-            color: rgba(255,255,255,0.6);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Sections */
-        section {
-            padding: 50px 0;
-        }
-        section + section {
-            border-top: 1px solid var(--border);
-        }
-
-        h2 {
-            font-size: 28px;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        h3 {
-            font-size: 20px;
-            color: var(--text);
-            margin: 24px 0 12px;
-        }
-        p {
-            color: var(--text-light);
-            margin-bottom: 16px;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 28px;
-            margin: 20px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .card.highlight {
-            border-left: 4px solid var(--accent);
-        }
-        .card.green-highlight {
-            border-left: 4px solid var(--green);
-            background: rgba(90,189,40,0.08);
-        }
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary);
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 28px;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 6px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #0d0f0e;
-            border: 3px solid var(--bg);
-        }
-        .timeline-item.resolved::before {
-            background: var(--green);
-        }
-        .timeline-item h4 {
-            font-size: 16px;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
-        .timeline-item p {
-            font-size: 14px;
-            margin-bottom: 0;
-        }
-
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16px 0;
-            font-size: 14px;
-        }
-        th {
-            background: #0d0f0e;
-            color: white;
-            padding: 10px 14px;
-            text-align: left;
-            font-weight: 600;
-        }
-        td {
-            padding: 10px 14px;
-            border-bottom: 1px solid var(--border);
-        }
-        tr:nth-child(even) { background: rgba(255,255,255,0.04); }
-        .green { color: var(--green); font-weight: 600; }
-        .red { color: var(--red); font-weight: 600; }
-
-        /* Value comparison */
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .comparison-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 24px;
-        }
-        .comparison-card.traditional {
-            border-top: 3px solid var(--red);
-        }
-        .comparison-card.agm {
-            border-top: 3px solid var(--green);
-        }
-        .comparison-card h3 {
-            margin-top: 0;
-            font-size: 16px;
-        }
-        .comparison-card .price {
-            font-size: 32px;
-            font-weight: 700;
-            margin: 12px 0;
-        }
-        .comparison-card.traditional .price { color: var(--red); }
-        .comparison-card.agm .price { color: var(--green); }
-        .comparison-card .detail {
-            font-size: 13px;
-            color: var(--text-light);
-        }
-
-        /* Metrics grid */
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
-        }
-        .metric {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-        .metric .value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .metric .label {
-            font-size: 12px;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-        }
-
-        /* Feature list */
-        .feature-list {
-            list-style: none;
-            padding: 0;
-        }
-        .feature-list li {
-            padding: 8px 0 8px 28px;
-            position: relative;
-            font-size: 14px;
-            color: var(--text-light);
-        }
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--green);
-            font-weight: 700;
-            font-size: 16px;
-        }
-        .feature-list li.missing::before {
-            content: '✗';
-            color: var(--red);
-        }
-
-        /* Quote */
-        blockquote {
-            border-left: 3px solid var(--accent);
-            padding: 16px 24px;
-            margin: 20px 0;
-            background: rgba(231,76,60,0.08);
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-            color: var(--text);
-        }
-
-        /* Footer */
-        .footer {
-            background: #0d0f0e;
-            color: rgba(255,255,255,0.7);
-            padding: 40px 0;
-            text-align: center;
-            font-size: 13px;
-        }
-        .footer a { color: var(--accent); text-decoration: none; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 28px; }
-            .hero-stats { gap: 24px; }
-            .comparison { grid-template-columns: 1fr; }
-            .hero { padding: 50px 20px 40px; }
-        }
-        /* Nav */
-        .case-study-nav {
-            background: #0a1628;
-            padding: 10px 0;
-            font-size: 13px;
-            text-align: center;
-        }
-        .case-study-nav a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            margin: 0 16px;
-            transition: color 0.2s;
-        }
-        .case-study-nav a:hover { color: #5abd28; }
-        .case-study-nav a.active { color: #5abd28; font-weight: 600; }
-    </style>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<style>h1, h2, h3, .hero-stat .number { font-family: 'Space Grotesk', -apple-system, sans-serif; } body { font-size: 18px; } .card ul, .card ol { font-size: 18px; } p, li { text-wrap: pretty; } h1, h2, h3 { text-wrap: balance; }</style>
-</head>
-<body>
-
-<!-- NAV -->
-<div class="case-study-nav">
-    <a href="https://agmprotools.com" style="font-weight:700;color:#5abd28;">&larr; AGM Pro Tools</a>
-    <a href="index.html" class="active">Case Study #1: Record Contamination</a>
-    <a href="case-study-2-dashboard-intelligence.html">Case Study #2: Dashboard Intelligence</a>
-    <a href="case-study-3-zapier-elimination.html">Case Study #3: Zapier Elimination</a>
-    <a href="case-study-4-pestroutes-discovery.html">Case Study #4: PestRoutes Discovery</a>
-    <a href="case-study-5-jobber-texas-turf.html">Case Study #5: Jobber Bridge</a>
-    <a href="case-study-6-longitudinal-record.html">Case Study #6: The Longitudinal Record</a>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case studies | AGM Pro Tools</title>
+<meta name="description" content="Real numbers from real field-service businesses: what was leaking, how it was found, and what changed.">
+<link rel="canonical" href="https://casestudies.agmprotools.com/">
+<meta property="og:title" content="Case studies | AGM Pro Tools"><meta property="og:description" content="Real numbers from real field-service businesses: what was leaking, how it was found, and what changed.">
+<meta property="og:type" content="article"><meta property="og:url" content="https://casestudies.agmprotools.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06090a;--bg2:#0b100f;--card:#0f1514;--card2:#141c1a;--line:#1f2a27;--line2:#2a3834;
+--fg:#e9f0ea;--dim:#9aa8a1;--mute:#6b7a73;--green:#6bd13a;--green2:#2fbf71;--amber:#f5a524;--red:#f0524f;--cyan:#3fd4d9;--blue:#5aa9ff}
+@media (prefers-color-scheme: light){:root{--bg:#f6f8f6;--bg2:#eef2ef;--card:#fff;--card2:#f3f6f4;--line:#dfe6e2;--line2:#cfd9d4;
+--fg:#0d1512;--dim:#4b5a53;--mute:#7a8882;--green:#3a9e14;--green2:#16955a;--amber:#c47c00;--red:#d23431;--cyan:#0f9aa0;--blue:#1f6fd1}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3,.big,.num{font-family:"Space Grotesk",Inter,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;height:62px}
+.logo{display:block;position:relative;width:164px;height:31px;overflow:hidden;flex-shrink:0}
+.logo img{position:absolute;height:148px;width:auto;left:-28px;top:-55px}
+.top nav{display:flex;gap:20px;font-size:14px;color:var(--dim)}
+.top nav a{text-decoration:none}.top nav a:hover{color:var(--fg)}
+.sp{flex:1}
+.cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--green),var(--green2));color:#06100a;font-weight:700;text-decoration:none;border-radius:11px;padding:10px 16px;font-size:14px;white-space:nowrap}
+.ghost{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);text-decoration:none;border-radius:11px;padding:10px 16px;font-weight:600;font-size:14px}
+.hero{padding:72px 0 40px;border-bottom:1px solid var(--line);background:radial-gradient(900px 400px at 15% -10%,color-mix(in srgb,var(--green) 14%,transparent),transparent 70%)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);border:1px solid color-mix(in srgb,var(--green) 40%,var(--line));border-radius:99px;padding:4px 11px}
+.chip.m{color:var(--dim);border-color:var(--line2)}
+.hero h1{font-size:clamp(36px,5.6vw,68px);line-height:1.02;letter-spacing:-.02em;max-width:980px}
+.hero .dek{font-size:clamp(17px,1.6vw,20px);color:var(--dim);max-width:760px;margin-top:18px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:38px}
+.stats div{background:var(--card);padding:20px 22px}
+.stats .num{font-size:clamp(28px,3.4vw,42px);font-weight:700;color:var(--green);line-height:1.05}
+.stats .l{font-size:13.5px;color:var(--dim);margin-top:4px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;padding:56px 0 24px;align-items:start}
+.glance{position:sticky;top:86px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.glance h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:12px}
+.glance dl{display:grid;gap:12px}
+.glance dt{font-size:12px;color:var(--mute);font-weight:600}
+.glance dd{font-size:14px}
+.glance .cta{margin-top:18px;width:100%;justify-content:center}
+article section{margin-bottom:56px}
+.kick{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+article h2{font-size:clamp(26px,3vw,36px);line-height:1.12;margin-bottom:16px;letter-spacing:-.01em}
+article h3{font-size:19px;margin:22px 0 8px}
+article p{color:var(--dim);font-size:17px;margin-bottom:14px;max-width:720px}
+article p b,article li b{color:var(--fg)}
+article ul.plain{margin:6px 0 16px 20px;color:var(--dim);font-size:16.5px;display:grid;gap:8px;max-width:720px}
+.question{font:600 clamp(24px,3vw,34px)/1.2 "Space Grotesk",Inter,sans-serif;border-left:4px solid var(--green);padding:6px 0 6px 22px;margin:10px 0 22px;max-width:760px}
+.pq{margin:30px 0;padding:26px 28px;border-radius:18px;background:color-mix(in srgb,var(--green) 7%,var(--card));border:1px solid color-mix(in srgb,var(--green) 35%,var(--line))}
+.pq blockquote{font:600 clamp(21px,2.3vw,27px)/1.3 "Space Grotesk",Inter,sans-serif}
+.pq cite{display:block;margin-top:12px;font-style:normal;font-size:14px;color:var(--dim)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:8px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.card .num{font-size:28px;font-weight:700;color:var(--amber);line-height:1.1;margin-bottom:4px}
+.card.ok .num{color:var(--green)}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{font-size:15px;margin:0}
+.tl{position:relative;margin:10px 0 6px;padding-left:28px}
+.tl:before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line2)}
+.tli{position:relative;margin-bottom:18px}
+.tli:before{content:"";position:absolute;left:-26px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--mute)}
+.tli.problem:before{border-color:var(--amber)}
+.tli.fix:before{border-color:var(--green);background:var(--green)}
+.tli.mile:before{border-color:var(--cyan)}
+.tli .when{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.tli.problem .when{color:var(--amber)}.tli.fix .when{color:var(--green)}.tli.mile .when{color:var(--cyan)}
+.tli h3{margin:2px 0 4px;font-size:18px}
+.tli p{font-size:15.5px;margin:0}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;margin:10px 0 18px;font-size:14.5px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.tbl th{text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);background:var(--card2);padding:11px 14px;border-bottom:1px solid var(--line)}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--dim);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:first-child{color:var(--fg);font-weight:600}
+.tbl .bad{color:var(--amber)}.tbl .good{color:var(--green);font-weight:600}
+.tscroll{overflow-x:auto;max-width:100%}
+.tscroll .tbl{min-width:560px}
+.art{margin:18px 0 26px}
+.art .cap{font-size:12.5px;color:var(--mute);margin-top:8px}
+.results{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.res{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.res .num{font-size:34px;font-weight:700;color:var(--green);line-height:1.05}
+.res .t{font-weight:700;margin:6px 0 4px}
+.res p{font-size:14.5px;margin:0}
+.try{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px}
+.try ol{margin:10px 0 0 22px;display:grid;gap:10px;color:var(--dim);font-size:16px}
+.try ol b{color:var(--fg)}
+.src{font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:14px;margin-top:8px;max-width:760px}
+.more{padding:56px 0;border-top:1px solid var(--line);background:var(--bg2)}
+.more h2{font-size:28px;margin-bottom:20px}
+.mg{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s}
+.mc:hover{border-color:var(--green);transform:translateY(-2px)}
+.mc .num{font-size:26px;font-weight:700;color:var(--green)}
+.mc .t{font-weight:700;margin:6px 0 4px}
+.mc p{font-size:14px;color:var(--dim)}
+.mc .go{margin-top:auto;padding-top:12px;color:var(--green);font-weight:600;font-size:14px}
+.band{padding:64px 0;text-align:center}
+.band h2{font-size:clamp(28px,3.6vw,42px);line-height:1.1;margin-bottom:12px}
+.band p{color:var(--dim);max-width:640px;margin:0 auto 22px;font-size:17px}
+.band .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font-size:13px;color:var(--mute)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+footer a{color:var(--dim);text-decoration:none}
+/* artifacts */
+.screen{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.screen .bar2{display:flex;align-items:center;gap:7px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--card2);font-size:12px;color:var(--mute)}
+.screen .bar2 i{width:9px;height:9px;border-radius:50%;background:var(--line2)}
+.screen .body{padding:16px 18px}
+.row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:11px;margin-bottom:8px;background:var(--card2);font-size:14px}
+.row small{display:block;color:var(--mute);font-size:12.5px}
+.row .tag{font-size:12px;font-weight:700;border-radius:99px;padding:3px 9px;background:color-mix(in srgb,var(--amber) 18%,transparent);color:var(--amber);white-space:nowrap}
+.row .tag.g{background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green)}
+.row.hot{border-color:color-mix(in srgb,var(--amber) 55%,var(--line))}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tile{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card)}
+.tile .h{font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--mute)}
+.tile .v{font:700 52px/1 "Space Grotesk",Inter,sans-serif;margin:10px 0 6px}
+.tile.bad{border-color:color-mix(in srgb,var(--amber) 50%,var(--line))}.tile.bad .v{color:var(--amber)}
+.tile.good{border-color:color-mix(in srgb,var(--green) 50%,var(--line))}.tile.good .v{color:var(--green)}
+.tile p{font-size:14px;color:var(--dim);margin:0}
+.flow{display:grid;grid-template-columns:1fr auto 1.1fr;gap:18px;align-items:center}
+.stack{display:grid;gap:7px}
+.stack span{display:block;border:1px dashed var(--line2);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--dim);background:var(--card)}
+.arrow{font:700 34px "Space Grotesk";color:var(--green)}
+.one{border:1px solid color-mix(in srgb,var(--green) 55%,var(--line));background:color-mix(in srgb,var(--green) 8%,var(--card));border-radius:16px;padding:18px 20px}
+.one .t{font:700 20px "Space Grotesk",Inter,sans-serif;margin-bottom:8px}
+.one ul{margin-left:18px;color:var(--dim);font-size:14.5px;display:grid;gap:6px}
+.hub{display:grid;grid-template-columns:1fr auto 1.4fr;gap:16px;align-items:center}
+.hubc{border:1px solid color-mix(in srgb,var(--green) 55%,var(--line));border-radius:16px;padding:16px;text-align:center;background:color-mix(in srgb,var(--green) 8%,var(--card))}
+.hubc .t{font:700 18px "Space Grotesk",Inter,sans-serif}
+.hubc small{color:var(--dim);font-size:13px}
+.centers{display:grid;gap:8px}
+.ctr{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:11px;padding:9px 12px;font-size:14px;background:var(--card)}
+.ctr b{font-size:12px;color:var(--green)}.ctr.p b{color:var(--mute)}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grid9 span{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;background:var(--card)}
+.grid9 span:before{content:"\25CF  ";color:var(--green)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.vs .col{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card)}
+.vs .col h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.vs .col.y h4{color:var(--green)}.vs .col.n h4{color:var(--amber)}
+.vs .col li{margin-left:18px;color:var(--dim);font-size:14.5px;margin-bottom:6px}
+/* index */
+.lib-hero{padding:72px 0 44px;border-bottom:1px solid var(--line);background:radial-gradient(900px 400px at 15% -10%,color-mix(in srgb,var(--green) 14%,transparent),transparent 70%)}
+.lib-hero h1{font-size:clamp(38px,5.6vw,66px);line-height:1.03;max-width:900px}
+.lib-hero p{color:var(--dim);font-size:19px;max-width:720px;margin-top:16px}
+.feat{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;text-decoration:none;border:1px solid color-mix(in srgb,var(--green) 50%,var(--line));background:color-mix(in srgb,var(--green) 8%,var(--card));border-radius:22px;padding:32px;margin:44px 0 18px;transition:transform .2s}
+.feat:hover{transform:translateY(-2px)}
+.feat .k{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.feat h2{font-size:clamp(28px,3.4vw,42px);line-height:1.08;margin:8px 0 10px}
+.feat p{color:var(--dim);font-size:16.5px}
+.feat .nums{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.feat .nums div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.feat .nums .num{font-size:30px;font-weight:700;color:var(--green)}
+.feat .nums .l{font-size:13px;color:var(--dim)}
+.grp{margin:40px 0 8px}
+.grp h2{font-size:24px}
+.grp p{color:var(--dim);font-size:15.5px}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr);gap:28px}.glance{position:static;order:-1}
+.mg,.results{grid-template-columns:1fr 1fr}.feat{grid-template-columns:1fr}}
+@media (max-width:720px){.top nav{display:none}.stats{grid-template-columns:1fr 1fr}
+.cards,.pair,.vs,.mg,.results{grid-template-columns:1fr}
+.flow,.hub{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}
+.grid9{grid-template-columns:1fr 1fr}.wrap{padding:0 16px}.hero{padding:48px 0 32px}}
+@media (max-width:420px){.stats .num,.feat .nums .num{font-size:23px;overflow-wrap:anywhere}.stats div{padding:14px}.feat{padding:22px}.logo{width:131px;height:25px}.logo img{height:118px;left:-22px;top:-44px}.top .cta{padding:9px 12px}}
+</style>
+</head><body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="https://agmprotools.com"><img src="https://assets.cdn.filesafe.space/Yb6UMYQxmGvtCvO1HyDL/media/6a1884c7054f002268ca7f10.png" alt="AGM Pro Tools"></a>
+  <nav><a href="./">All case studies</a><a href="https://agmprotools.com">agmprotools.com</a></nav>
+  <span class="sp"></span>
+  <a class="cta" href="https://contractorautomationscore.com/?utm_source=case_study&utm_medium=site&utm_campaign=index" target="_blank" rel="noopener">Get your free score &rarr;</a>
+</div></header>
+<section class="lib-hero"><div class="wrap">
+  <div class="chips"><span class="chip">Case studies</span></div>
+  <h1>What it found in real businesses.</h1>
+  <p>Every field-service business leaks in the same places: the call nobody returned, the number nobody checked, the finished job nobody collected on. These are the stories of finding them, with the real numbers.</p>
+</div></section>
+<div class="wrap">
+<a class="feat" href="case-study-7-replacing-seven-tools.html">
+  <div><div class="k">The flagship story &middot; Heavenly Greens</div><h2>3 years. 2 decisions. 1 piece of software.</h2><p>For eleven years, Heavenly Greens ran on the same Salesforce setup, with more software added around it every year. By 2025 that software cost about $100,000 a year. Then we made two decisions. This is how one system is replacing seven tools, and what it caught that the old setup never showed us.</p>
+  <p style="margin-top:14px;color:var(--green);font-weight:600">Read the story &rarr;</p></div>
+  <div class="nums"><div><div class="num">11 years</div><div class="l">on one Salesforce setup, built in July 2015</div></div><div><div class="num">7</div><div class="l">separate tools being replaced</div></div><div><div class="num">$100K+</div><div class="l">a year of software being replaced</div></div><div><div class="num">$80K</div><div class="l">owed on finished jobs, found the first time we looked</div></div></div>
+</a>
+<div class="grp"><h2>The leaks, found at Heavenly Greens</h2><p>Heavenly Greens is the turf company AGM Pro Tools was built inside. Each of these was found on its own records.</p></div><div class="mg" style="margin-top:16px"><a class="mc" href="case-study-9-hidden-missed-call.html"><div class="num">6 calls</div><div class="t">The auto-text that hid the missed call.</div><p>Six calls in twenty minutes, and the call-back board never saw her.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-2-dashboard-intelligence.html"><div class="num">3 &rarr; 30</div><div class="t">The dashboard said 3. The top rep ran 30.</div><p>Three systems, zero agreement, and a sales dashboard nobody could trust.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-8-unbilled-work.html"><div class="num">$80K</div><div class="t">About $80,000 owed on jobs we'd already finished.</div><p>Nothing on the board said collect. The first count found 41 finished jobs not paid in full.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-10-kitchen-table-contract.html"><div class="num">$140,620</div><div class="t">The contract that failed at the kitchen table.</div><p>A blank screen in April. Ten contracts worth $140,620 in one week in September.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-11-retyped-contract.html"><div class="num">6 of 77</div><div class="t">The wrong turf went out because someone retyped the contract.</div><p>Every retype is a place for it to go wrong. Now the sheet fills itself from the contract.</p><span class="go">Read the story &rarr;</span></a></div>
+<div class="grp"><h2>At every size</h2><p>The same leaks show up whatever software a business runs and however big it is.</p></div><div class="mg" style="margin-top:16px"><a class="mc" href="case-study-6-longitudinal-record.html"><div class="num">0 days</div><div class="t">The report their software couldn't run.</div><p>A pest-control operator asked how this year compared to last. The history didn't exist.</p><span class="go">Read the story &rarr;</span></a></div>
 </div>
-
-<!-- HERO -->
-<div class="hero">
-    <div class="container">
-        <div class="hero-badge">AGM Pro Tools — Case Study</div>
-        <h1>How We Replaced Zapier and Fixed 176 Customer Records in One Session</h1>
-        <p>Heavenly Greens — Salesforce & AGM Integration&nbsp;Overhaul</p>
-        <div class="hero-stats">
-            <div class="hero-stat">
-                <div class="number">176</div>
-                <div class="label">Contacts Fixed</div>
-            </div>
-            <div class="hero-stat">
-                <div class="number">4</div>
-                <div class="label">Zapier Zaps Replaced</div>
-            </div>
-            <div class="hero-stat">
-                <div class="number">1</div>
-                <div class="label">Session</div>
-            </div>
-            <div class="hero-stat">
-                <div class="number">$0</div>
-                <div class="label">Downtime</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- THE CLIENT -->
-<section>
-    <div class="container">
-        <h2>The Client</h2>
-        <p><strong>Heavenly Greens</strong> is a leading artificial turf installation company serving the San Francisco Bay Area. They operate across multiple sales channels including direct residential, commercial, and a strategic partnership with Costco through Shaw Industries. Their technology stack spans Salesforce (CRM), AGM/GoHighLevel (marketing automation & pipeline management), and multiple third-party integrations including DocuSign, Invoca, and&nbsp;QuickBooks.</p>
-        <div class="metrics">
-            <div class="metric">
-                <div class="value">27</div>
-                <div class="label">Active Users in SF</div>
-            </div>
-            <div class="metric">
-                <div class="value">22</div>
-                <div class="label">SF Dashboards</div>
-            </div>
-            <div class="metric">
-                <div class="value">42</div>
-                <div class="label">Zapier Automations</div>
-            </div>
-            <div class="metric">
-                <div class="value">221</div>
-                <div class="label">AGM Workflows</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- THE PROBLEM -->
-<section>
-    <div class="container">
-        <h2>The Problem</h2>
-        <div class="card highlight">
-            <h3>Customer-Facing Documents Had Wrong Names</h3>
-            <p>A completed installation verification form — signed by the customer — showed the member name as <strong>"Jane Smith-Costco-Front Yard"</strong> instead of simply <strong>"Jane Smith"</strong> (name changed). The project descriptor was leaking into the customer's actual name on legally binding&nbsp;documents.</p>
-        </div>
-        <p>This wasn't an isolated incident. The contamination was systemic — affecting every customer whose job progressed through certain pipeline stages. The wrong names were appearing on contracts, completion forms, review requests, and internal&nbsp;communications.</p>
-        <p>The business impact was immediate: unprofessional customer-facing documents, inaccurate CRM data, and broken automation workflows that depended on clean contact&nbsp;names.</p>
-    </div>
-</section>
-
-<!-- THE INVESTIGATION -->
-<section>
-    <div class="container">
-        <h2>The Investigation</h2>
-        <p>AGM Pro Tools conducted a real-time triage session, tracing the data contamination from the signed document back through every system in the&nbsp;stack.</p>
-
-        <div class="timeline">
-            <div class="timeline-item resolved">
-                <h4>Traced the contamination path</h4>
-                <p>Followed the mangled name from the completion form → AGM contact record → Zapier automation → Salesforce Opportunity fields. Identified that Zapier was overwriting AGM contact names on every pipeline stage&nbsp;change.</p>
-            </div>
-            <div class="timeline-item resolved">
-                <h4>Found the root cause: a dead integration field</h4>
-                <p>The Zapier Zaps were mapping a field called "Broadly Business Name" to the AGM contact's Full Name. Broadly — a review management platform — had been cancelled months ago, but its custom fields and automation were never cleaned up in Salesforce. The field happened to contain clean names for some contacts, but for others, HG's team had edited it to include project&nbsp;descriptors.</p>
-            </div>
-            <div class="timeline-item resolved">
-                <h4>Discovered Broadly was still firing outbound messages</h4>
-                <p>Queried the Salesforce API directly and found that while Broadly's custom fields had been removed, a workflow rule and outbound message on the Opportunity object were still active — sending data to a dead endpoint on every job completion. A ghost integration consuming resources and introducing&nbsp;risk.</p>
-            </div>
-            <div class="timeline-item resolved">
-                <h4>Identified broken review automation</h4>
-                <p>The review request workflow existed in AGM and was correctly built, but it was never firing. The trigger chain — Salesforce marks a job complete → Zapier syncs to AGM → AGM review workflow fires — was broken because Zapier was using the wrong field mapping. Customers were completing jobs and never receiving review&nbsp;requests.</p>
-            </div>
-            <div class="timeline-item resolved">
-                <h4>Confirmed the Salesforce object limitation</h4>
-                <p>Investigated why the original Zapier builder used "Broadly Business Name" in the first place. The Salesforce Opportunity (Job) object has no separate First Name / Last Name fields. The builder needed a clean name source, couldn't find one on the Job record, and used the Broadly field as a workaround. It worked until Broadly was&nbsp;removed.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- THE AUDIT -->
-<section>
-    <div class="container">
-        <h2>The Audit</h2>
-        <p>Before building any replacement, AGM Pro Tools conducted a complete Salesforce system audit — mapping every automation, trigger, email alert, and integration to ensure nothing would be disrupted during the&nbsp;fix.</p>
-
-        <div class="metrics">
-            <div class="metric">
-                <div class="value">50</div>
-                <div class="label">Workflow Rules</div>
-            </div>
-            <div class="metric">
-                <div class="value">21</div>
-                <div class="label">Email Alerts</div>
-            </div>
-            <div class="metric">
-                <div class="value">38</div>
-                <div class="label">Apex Triggers</div>
-            </div>
-            <div class="metric">
-                <div class="value">14</div>
-                <div class="label">Installed Packages</div>
-            </div>
-            <div class="metric">
-                <div class="value">57</div>
-                <div class="label">Email Templates</div>
-            </div>
-            <div class="metric">
-                <div class="value">25</div>
-                <div class="label">Pipeline Stages</div>
-            </div>
-        </div>
-
-        <p>The audit was compiled into a comprehensive reference document — every workflow rule categorized by object, every email alert mapped to its trigger, every installed package assessed for active vs. legacy status. This document now serves as the foundation for the full Zapier deprecation&nbsp;roadmap.</p>
-
-        <div class="card green-highlight">
-            <h3>Additional Findings</h3>
-            <ul class="feature-list">
-                <li>Broadly outbound message still active on cancelled&nbsp;subscription</li>
-                <li>HubSpot integration package installed (v2.60) — status unknown, possibly&nbsp;legacy</li>
-                <li>No review automation firing despite workflow being correctly built in&nbsp;AGM</li>
-                <li>Salesforce "Company to Full Name" workflow rule on Lead object — separate naming&nbsp;concern</li>
-                <li>42 Zapier Zaps active — many redundant or using outdated field&nbsp;mappings</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- THE SOLUTION -->
-<section>
-    <div class="container">
-        <h2>The Solution</h2>
-
-        <h3>1. Built an Enterprise-Grade Replacement</h3>
-        <p>Rather than fixing the Zapier field mapping (which would have been a band-aid on a fundamentally flawed approach), AGM Pro Tools built a purpose-built integration endpoint on Modal that replaces all four Salesforce → AGM Zapier&nbsp;Zaps.</p>
-
-        <div class="card">
-            <h3>Architecture: SF → AGM Stage Sync</h3>
-            <table>
-                <tr><th>Component</th><th>Purpose</th></tr>
-                <tr><td>SF SOAP/REST API</td><td>Polls for Opportunity stage changes every 5 minutes</td></tr>
-                <tr><td>Contact matching (email → phone fallback)</td><td>Finds existing AGM contact without relying on name fields</td></tr>
-                <tr><td>Pipeline stage move via AGM API</td><td>Moves opportunity to correct stage in Lead Flow pipeline</td></tr>
-                <tr><td>SQLite event tracking</td><td>Deduplication — never processes the same stage change twice</td></tr>
-                <tr><td>Safety checks</td><td>No backwards pipeline movement, no duplicate workflow triggers</td></tr>
-                <tr><td>Retry logic with caps</td><td>Failed updates retry up to 3 times, then dead-letter with alert</td></tr>
-                <tr><td>Slack alerts</td><td>Real-time notification on every failure, throttled per contact</td></tr>
-                <tr><td>Health endpoint</td><td>Canary monitoring for uptime verification</td></tr>
-                <tr><td>Heartbeat tracking</td><td>Persistent state on Modal Volume for operational visibility</td></tr>
-            </table>
-        </div>
-
-        <h3>2. Cleaned 176 Contaminated Contact Records</h3>
-        <p>Built and executed a programmatic cleanup that stripped project descriptors from every affected AGM contact name. The script handled 30+ contamination patterns including compound variants (-costco-back yard, -front and side yard-pavers, -back yard-cancelled) and edge cases like hyphenated surnames (Garcia-Mendoza,&nbsp;Evoy-Mount).</p>
-
-        <div class="metrics">
-            <div class="metric">
-                <div class="value">176</div>
-                <div class="label">Contacts Cleaned</div>
-            </div>
-            <div class="metric">
-                <div class="value">0</div>
-                <div class="label">Errors</div>
-            </div>
-            <div class="metric">
-                <div class="value">30+</div>
-                <div class="label">Pattern Variants</div>
-            </div>
-            <div class="metric">
-                <div class="value">100%</div>
-                <div class="label">Audit Logged</div>
-            </div>
-        </div>
-
-        <h3>3. Restored the Review Request Chain</h3>
-        <p>By replacing the Zapier bridge with a clean integration that properly moves pipeline stages, the existing AGM review workflow now fires correctly when production marks a job as "Completed - Paid" in Salesforce. The review request chain — which had been silently broken — is now&nbsp;operational.</p>
-
-        <h3>4. Deployed with Zero Downtime</h3>
-        <p>The Modal endpoint was deployed alongside the existing Costco lead intake cron, sharing the same isolated infrastructure (secrets, volumes, monitoring). The old Zapier Zaps were paused only after the replacement was validated against live data. At no point was any business workflow&nbsp;interrupted.</p>
-    </div>
-</section>
-
-<!-- THE VALUE -->
-<section style="background: rgba(41,128,185,0.10);">
-    <div class="container">
-        <h2>The Value</h2>
-
-        <div class="comparison">
-            <div class="comparison-card traditional">
-                <h3>Traditional Approach</h3>
-                <div class="price">$11K – $24K+</div>
-                <div class="detail" style="margin-bottom: 12px;">68–100 hours across 4-5 vendors over 3-6 weeks</div>
-                <table style="font-size: 13px;">
-                    <tr><td>Salesforce Admin</td><td>15-20 hrs</td><td>$3,000-5,000</td></tr>
-                    <tr><td>Zapier Specialist</td><td>10-15 hrs</td><td>$1,500-2,600</td></tr>
-                    <tr><td>GHL Developer</td><td>8-12 hrs</td><td>$1,000-2,400</td></tr>
-                    <tr><td>Integration Engineer</td><td>20-30 hrs</td><td>$3,500-9,000</td></tr>
-                    <tr><td>Data Cleanup</td><td>5-8 hrs</td><td>$625-1,600</td></tr>
-                    <tr><td>Project Manager</td><td>10-15 hrs</td><td>$1,500-3,750</td></tr>
-                </table>
-                <ul class="feature-list" style="margin-top: 16px;">
-                    <li class="missing">No single vendor sees the full&nbsp;picture</li>
-                    <li class="missing">No deduplication or safety&nbsp;checks</li>
-                    <li class="missing">No real-time monitoring or&nbsp;alerting</li>
-                    <li class="missing">No audit&nbsp;trail</li>
-                    <li class="missing">3-6 week&nbsp;timeline</li>
-                </ul>
-            </div>
-            <div class="comparison-card agm">
-                <h3>AGM Pro Tools</h3>
-                <div class="price">1 Session</div>
-                <div class="detail" style="margin-bottom: 12px;">Diagnosed, built, tested, deployed, and validated — same day</div>
-                <table style="font-size: 13px;">
-                    <tr><td>Full SF system audit</td><td colspan="2">Complete</td></tr>
-                    <tr><td>Full AGM deep dive</td><td colspan="2">Complete</td></tr>
-                    <tr><td>Integration replacement</td><td colspan="2">Deployed</td></tr>
-                    <tr><td>Data cleanup (176 records)</td><td colspan="2">Executed</td></tr>
-                    <tr><td>8-phase migration roadmap</td><td colspan="2">Delivered</td></tr>
-                    <tr><td>Review chain restoration</td><td colspan="2">Live</td></tr>
-                </table>
-                <ul class="feature-list" style="margin-top: 16px;">
-                    <li>Full-stack visibility (SF + AGM + Zapier)</li>
-                    <li>SQLite dedup — never process same event&nbsp;twice</li>
-                    <li>Real-time Slack alerts on every&nbsp;failure</li>
-                    <li>Complete audit trail with JSON&nbsp;logs</li>
-                    <li>Same-day&nbsp;delivery</li>
-                </ul>
-            </div>
-        </div>
-
-        <blockquote>
-            No single vendor would have found the dead Broadly outbound message, the broken review chain, and the name contamination in the same engagement — because no single vendor operates across Salesforce, AGM, and Zapier simultaneously. AGM Pro Tools does.
-        </blockquote>
-    </div>
-</section>
-
-<!-- WHAT ZAPIER CAN'T DO -->
-<section>
-    <div class="container">
-        <h2>What the Replacement Does That Zapier Can't</h2>
-        <table>
-            <tr><th>Capability</th><th>Zapier</th><th>AGM Pro Tools</th></tr>
-            <tr><td>Deduplication (never process same event twice)</td><td class="red">No</td><td class="green">SQLite event tracking</td></tr>
-            <tr><td>Safety checks (prevent duplicate customer messages)</td><td class="red">No</td><td class="green">Stage position validation</td></tr>
-            <tr><td>No backwards pipeline movement</td><td class="red">No</td><td class="green">Stage order enforcement</td></tr>
-            <tr><td>Retry failed updates with caps</td><td class="red">No</td><td class="green">3-attempt cap + dead letter</td></tr>
-            <tr><td>Real-time failure alerting</td><td class="red">No</td><td class="green">Slack alerts per failure type</td></tr>
-            <tr><td>Alert throttling (no flood)</td><td class="red">No</td><td class="green">Per-contact dedup</td></tr>
-            <tr><td>Health endpoint for monitoring</td><td class="red">No</td><td class="green">/health on Modal</td></tr>
-            <tr><td>Audit trail</td><td class="red">No</td><td class="green">Full SQLite history</td></tr>
-            <tr><td>Contact matching by email/phone (not name)</td><td class="red">Uses name fields</td><td class="green">Email primary, phone fallback</td></tr>
-            <tr><td>Client isolation</td><td class="red">Shared account</td><td class="green">Separate Modal app + secrets</td></tr>
-        </table>
-    </div>
-</section>
-
-<!-- RESULTS -->
-<section>
-    <div class="container">
-        <h2>Results</h2>
-        <div class="metrics">
-            <div class="metric">
-                <div class="value">4</div>
-                <div class="label">Zapier Zaps Eliminated</div>
-            </div>
-            <div class="metric">
-                <div class="value">176</div>
-                <div class="label">Records Corrected</div>
-            </div>
-            <div class="metric">
-                <div class="value">0</div>
-                <div class="label">Downtime</div>
-            </div>
-            <div class="metric">
-                <div class="value">GREEN</div>
-                <div class="label">System Health</div>
-            </div>
-        </div>
-
-        <div class="card green-highlight">
-            <h3>Immediate Outcomes</h3>
-            <ul class="feature-list">
-                <li>Customer-facing documents now display correct&nbsp;names</li>
-                <li>Review request automation restored — customers now receive review requests after job&nbsp;completion</li>
-                <li>176 historically contaminated contact records cleaned to proper&nbsp;names</li>
-                <li>Dead Broadly integration identified for&nbsp;deactivation</li>
-                <li>Complete Salesforce system audit documented for ongoing&nbsp;reference</li>
-                <li>8-phase Zapier deprecation roadmap established (42 Zaps → 0)</li>
-                <li>Enterprise-grade monitoring, alerting, and audit trail in&nbsp;place</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<!-- ABOUT AGM PRO TOOLS -->
-<section style="background: linear-gradient(135deg, #0e1410 0%, #090b0b 100%); color: white; border: none;">
-    <div class="container" style="text-align: center;">
-        <h2 style="color: white;">About AGM Pro Tools</h2>
-        <p style="color: rgba(255,255,255,0.8); max-width: 650px; margin: 0 auto 24px;">AGM Pro Tools is an enterprise integration platform for field service businesses. We connect your FSM, CRM, and sales automation systems with self-healing pipelines, real-time monitoring, and the operational intelligence to find and fix problems before they affect your&nbsp;customers.</p>
-        <p style="color: rgba(255,255,255,0.6); font-size: 14px;">We don't just connect systems. We understand what's happening inside&nbsp;them.</p>
-        <a href="https://agmprotools.com/booking" target="_blank" style="display: inline-block; margin-top: 24px; padding: 14px 32px; background: #5abd28; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">Book a Free Strategy Call</a>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-    <div class="container">
-        <p>AGM Pro Tools &mdash; Enterprise Integration for Field&nbsp;Service</p>
-        <p style="margin-top: 8px;"><a href="https://agmprotools.com" style="color: rgba(255,255,255,0.6);">agmprotools.com</a></p>
-        <p style="margin-top: 16px; font-size: 11px; color: rgba(255,255,255,0.4);">Case study based on a live engineering session — March 20,&nbsp;2026</p>
-    </div>
-</div>
-
-</body>
-</html>
+<section class="band"><div class="wrap">
+  <h2>Where is your business leaking?</h2>
+  <p>Take the free Contractor Automation Score: 32 questions, about five minutes, and a report with an audio briefing. On Tuesday, December 8, we walk through the five leaks live in a free workshop, Find the Leaks Before January.</p>
+  <div class="btns"><a class="cta" href="https://contractorautomationscore.com/?utm_source=case_study&utm_medium=site&utm_campaign=index" target="_blank" rel="noopener">Get your free score &rarr;</a>
+  <a class="ghost" href="https://agmprotools.com/booking?utm_source=case_study&amp;utm_medium=site&amp;utm_campaign=index" target="_blank" rel="noopener">Talk about your business</a></div>
+</div></section>
+<footer><div class="wrap">
+  <span>&copy; 2026 AGM Pro Tools, a business of Scott Enterprises. Case studies use real numbers; people and customers are never named.</span>
+  <span><a href="./">All case studies</a> &middot; <a href="https://agmprotools.com">agmprotools.com</a> &middot; <a href="https://agmprotools.com/privacy">Privacy</a></span>
+</div></footer>
+</body></html>
