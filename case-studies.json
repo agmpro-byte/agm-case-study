@@ -1,50 +1,34 @@
 [
  {
-  "number": "1",
-  "file": "index.html",
-  "url": "https://casestudies.agmprotools.com/",
-  "title": "Record Contamination",
-  "headline": "How We Replaced Zapier and Fixed 176 Customer Records in One Session",
-  "subtitle": "Heavenly Greens &mdash; Salesforce/AGM integration overhaul"
+  "number": "7",
+  "file": "case-study-7-replacing-seven-tools.html",
+  "url": "https://casestudies.agmprotools.com/case-study-7-replacing-seven-tools.html",
+  "title": "Replacing Seven Tools",
+  "headline": "Replacing seven tools: over $100,000 a year",
+  "subtitle": "Heavenly Greens &mdash; eleven years on Salesforce, two decisions in 2025, and one system built around how the company actually works"
+ },
+ {
+  "number": "8",
+  "file": "case-study-8-unbilled-work.html",
+  "url": "https://casestudies.agmprotools.com/case-study-8-unbilled-work.html",
+  "title": "Finished Work, Never Billed",
+  "headline": "About $80,000 in finished work that was never billed",
+  "subtitle": "Heavenly Greens &mdash; 41 finished jobs not paid in full, the oldest waiting 581 days, found by one list"
  },
  {
   "number": "2",
   "file": "case-study-2-dashboard-intelligence.html",
   "url": "https://casestudies.agmprotools.com/case-study-2-dashboard-intelligence.html",
-  "title": "Dashboard Intelligence",
-  "headline": "From Data Chaos to Real-Time Intelligence",
-  "subtitle": "Live operational dashboards built on integration data"
- },
- {
-  "number": "3",
-  "file": "case-study-3-zapier-elimination.html",
-  "url": "https://casestudies.agmprotools.com/case-study-3-zapier-elimination.html",
-  "title": "Zapier Elimination",
-  "headline": "How We Eliminated 38 Zapier Automations and Built a Self-Healing Lead Pipeline",
-  "subtitle": "The complete middleware teardown &mdash; 38 automations replaced by a pipeline that heals itself"
- },
- {
-  "number": "4",
-  "file": "case-study-4-pestroutes-discovery.html",
-  "url": "https://casestudies.agmprotools.com/case-study-4-pestroutes-discovery.html",
-  "title": "PestRoutes Discovery",
-  "headline": "8,373 Customers. Zero Automation. Half Without Email.",
-  "subtitle": "What a platform audit found inside one pest operator&#39;s customer base"
- },
- {
-  "number": "5",
-  "file": "case-study-5-jobber-texas-turf.html",
-  "url": "https://casestudies.agmprotools.com/case-study-5-jobber-texas-turf.html",
-  "title": "The Jobber Bridge",
-  "headline": "How We Connected Jobber to a Full Growth Engine &mdash; Without Replacing Anything",
-  "subtitle": "Texas Turf &mdash; speed-to-lead, reviews, and reactivation running alongside Jobber"
+  "title": "The Dashboard Said 3",
+  "headline": "The dashboard said 3. The top rep ran 30.",
+  "subtitle": "Heavenly Greens &mdash; a sales dashboard that counted the wrong dates, and the check any owner can run"
  },
  {
   "number": "6",
   "file": "case-study-6-longitudinal-record.html",
   "url": "https://casestudies.agmprotools.com/case-study-6-longitudinal-record.html",
-  "title": "The Longitudinal Record",
-  "headline": "The Report Their Software Couldn't Run",
+  "title": "A Year of History the Software Never Kept",
+  "headline": "The Report Their Software Couldn&#39;t Run",
   "subtitle": "A Central Valley pest operator asked for year-over-year. The data didn&#39;t exist &mdash; so we built the record."
  }
 ]
