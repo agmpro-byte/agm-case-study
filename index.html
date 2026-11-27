@@ -19,11 +19,13 @@ body{background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,sans-ser
 a{color:inherit}
 h1,h2,h3,.big,.num{font-family:"Space Grotesk",Inter,sans-serif}
 h1,h2,h3{text-wrap:balance}
+.snt{display:inline-block}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:18px;height:62px}
-.logo{display:block;position:relative;width:164px;height:31px;overflow:hidden;flex-shrink:0}
-.logo img{position:absolute;height:148px;width:auto;left:-28px;top:-55px}
+.logo{display:block;flex-shrink:0}
+.logo img{display:block;height:40px;width:auto}
+@media (prefers-color-scheme: light){.logo{background:#0b0f0c;border-radius:9px;padding:4px 9px}}
 .top nav{display:flex;gap:20px;font-size:15px;color:var(--dim)}
 .top nav a{text-decoration:none}.top nav a:hover{color:var(--fg)}
 .sp{flex:1}
@@ -176,28 +178,28 @@ footer a{color:var(--dim);text-decoration:none}
 .cards,.pair,.vs,.mg,.results{grid-template-columns:1fr}
 .flow,.hub{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}
 .grid9{grid-template-columns:1fr 1fr}.wrap{padding:0 16px}.hero{padding:48px 0 32px}}
-@media (max-width:420px){.stats .num,.feat .nums .num{font-size:23px;overflow-wrap:anywhere}.stats div{padding:14px}.feat{padding:22px}.feat .nums{grid-template-columns:minmax(0,1fr)}.logo{width:131px;height:25px}.logo img{height:118px;left:-22px;top:-44px}.top .cta{padding:9px 10px;gap:6px}.top .wrap{gap:10px}}
+@media (max-width:420px){.stats .num,.feat .nums .num{font-size:23px;overflow-wrap:anywhere}.stats div{padding:14px}.feat{padding:22px}.feat .nums{grid-template-columns:minmax(0,1fr)}.logo img{height:32px}.top .cta{padding:9px 10px;gap:6px}.top .wrap{gap:10px}}
 @media (max-width:359px){.top .cta .arr{display:none}.top .cta{padding:8px 8px}.top .wrap{gap:4px}.wrap{padding-left:14px;padding-right:14px}}
 </style>
 </head><body>
 <header class="top"><div class="wrap">
-  <a class="logo" href="https://agmprotools.com"><img src="https://assets.cdn.filesafe.space/Yb6UMYQxmGvtCvO1HyDL/media/6a1884c7054f002268ca7f10.png" alt="AGM Pro Tools"></a>
+  <a class="logo" href="https://agmprotools.com"><img src="https://agm-newsletter-audio.s3.us-east-2.amazonaws.com/brand/agm-pro-tools-logo-darkbg.png" alt="AGM Pro Tools"></a>
   <nav><a href="./">All case studies</a><a href="https://agmprotools.com">agmprotools.com</a></nav>
   <span class="sp"></span>
   <a class="cta" href="https://contractorautomationscore.com/?utm_source=case_study&utm_medium=site&utm_campaign=index" target="_blank" rel="noopener">Get your free score<span class="arr"> &rarr;</span></a>
 </div></header>
 <section class="lib-hero"><div class="wrap">
   <div class="chips"><span class="chip">Case studies</span></div>
-  <h1>What it found in real businesses.</h1>
+  <h1>The leaks we found in real businesses.</h1>
   <p>Every field-service business leaks in the same places: the call nobody returned, the number nobody checked, the finished job nobody collected on. These are the stories of finding them, with the real numbers.</p>
 </div></section>
 <div class="wrap">
 <a class="feat" href="case-study-7-replacing-seven-tools.html">
-  <div><div class="k">The flagship story &middot; Heavenly Greens</div><h2>Seven subscriptions. Over $100,000 a year. One system replacing them all.</h2><p>Founded in 2003, Heavenly Greens is an artificial turf and landscaping company with nearly $400 million in lifetime sales. Its second software setup, started in 2014 and live in 2015, grew year by year into a marketing stack of seven annual subscriptions: over $100,000 a year, due again every year. In 2025 we stopped patching. This is how one system is replacing that whole stack, and what it caught that the old setup never showed us.</p>
+  <div><div class="k">The flagship story &middot; Heavenly Greens</div><h2><span class="snt">Seven subscriptions.</span> <span class="snt">Over $100,000 a year.</span> <span class="snt">One system replacing them all.</span></h2><p>Founded in 2003, Heavenly Greens is an artificial turf and landscaping company with nearly $400 million in lifetime sales. Its second software setup, started in 2014 and live in 2015, grew year by year into a marketing stack of seven annual subscriptions: over $100,000 a year, due again every year. In 2025 we stopped patching. This is how one system is replacing that whole stack, and what it caught that the old setup never showed us.</p>
   <p style="margin-top:14px;color:var(--green);font-weight:600">Read the story &rarr;</p></div>
   <div class="nums"><div><div class="num">~$400M</div><div class="l">in sales since 2003</div></div><div><div class="num">$100K+</div><div class="l">a year in software subscriptions to manage it</div></div><div><div class="num">7</div><div class="l">separate subscriptions, each holding a piece of the buyer's journey</div></div><div><div class="num">$80K</div><div class="l">owed on finished service jobs that none of the seven flagged</div></div></div>
 </a>
-<div class="grp"><h2>The leaks, found at Heavenly Greens</h2><p>Heavenly Greens is the artificial turf and landscaping company AGM Pro Tools was built inside. Each of these was found on its own records.</p></div><div class="mg" style="margin-top:16px"><a class="mc" href="case-study-9-hidden-missed-call.html"><div class="num">6 calls</div><div class="t">The auto-text that hid the missed call.</div><p>Six calls in twenty minutes, and the call-back board never saw her.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-2-dashboard-intelligence.html"><div class="num">3 &rarr; 30</div><div class="t">The dashboard said 3. The top rep ran 30.</div><p>Three systems, zero agreement, and a sales dashboard nobody could trust.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-8-unbilled-work.html"><div class="num">$80K</div><div class="t">About $80,000 owed on service jobs we'd already finished.</div><p>A service department run on paper, Salesforce and an old card process. Nobody followed up, so nobody got paid.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-10-kitchen-table-contract.html"><div class="num">$140,620</div><div class="t">The contract that failed at the kitchen table.</div><p>A blank screen in April. Ten contracts worth $140,620 in one week in September.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-11-retyped-contract.html"><div class="num">6 of 77</div><div class="t">The wrong turf went out because someone retyped the contract.</div><p>Every retype is a place for it to go wrong. Now the sheet fills itself from the contract.</p><span class="go">Read the story &rarr;</span></a></div>
+<div class="grp"><h2>The leaks, found at Heavenly Greens</h2><p>Heavenly Greens is the artificial turf and landscaping company AGM Pro Tools was built inside. Each of these was found on its own records.</p></div><div class="mg" style="margin-top:16px"><a class="mc" href="case-study-9-hidden-missed-call.html"><div class="num">6 calls</div><div class="t">The auto-text that hid the missed call.</div><p>Six calls in twenty minutes, and the call-back board never saw her.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-2-dashboard-intelligence.html"><div class="num">3 &rarr; 30</div><div class="t"><span class="snt">The dashboard said 3.</span> <span class="snt">The top rep ran 30.</span></div><p>Three systems, zero agreement, and a sales dashboard nobody could trust.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-8-unbilled-work.html"><div class="num">$80K</div><div class="t">About $80,000 owed on service jobs we'd already finished.</div><p>A service department run on paper, Salesforce and an old card process. Nobody followed up, so nobody got paid.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-10-kitchen-table-contract.html"><div class="num">$140,620</div><div class="t">The contract that failed at the kitchen table.</div><p>A blank screen in April. Ten contracts worth $140,620 in one week in September.</p><span class="go">Read the story &rarr;</span></a><a class="mc" href="case-study-11-retyped-contract.html"><div class="num">6 of 77</div><div class="t">The wrong turf went out because someone retyped the contract.</div><p>Every retype is a place for it to go wrong. Now the sheet fills itself from the contract.</p><span class="go">Read the story &rarr;</span></a></div>
 <div class="grp"><h2>At every size</h2><p>The same leaks show up whatever software a business runs and however big it is.</p></div><div class="mg" style="margin-top:16px"><a class="mc" href="case-study-6-longitudinal-record.html"><div class="num">0 days</div><div class="t">The report their software couldn't run.</div><p>A pest-control operator asked how this year compared to last. The history didn't exist.</p><span class="go">Read the story &rarr;</span></a></div>
 </div>
 <section class="band"><div class="wrap">
