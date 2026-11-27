@@ -7,7 +7,7 @@
 <meta property="og:title" content="The dashboard said 3. The top rep ran 30. | AGM Pro Tools case study"><meta property="og:description" content="Heavenly Greens&#x27; sales dashboard pulled from three systems that disagreed. Tracing every number to the record behind it fixed it in one session.">
 <meta property="og:type" content="article"><meta property="og:url" content="https://casestudies.agmprotools.com/case-study-2-dashboard-intelligence.html">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0c0d0d;--bg2:#111312;--card:#141615;--card2:#1a1c1b;--line:#262928;--line2:#343836;
 --fg:#f2f3f2;--dim:#a9afac;--mute:#7a817e;--green:#5cd18b;--green2:#3fbf78;--amber:#f2b950;--red:#ef4444;--cyan:#72aaff;--blue:#72aaff}
@@ -17,8 +17,9 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
-h1,h2,h3,.big,.num{font-family:"Space Grotesk",Inter,sans-serif}
+h1,h2,h3,.big,.num{font-family:Inter,system-ui,sans-serif}
 h1,h2,h3{text-wrap:balance}
+h1{font-weight:800;letter-spacing:-0.035em}h2{font-weight:800;letter-spacing:-0.025em}h3{font-weight:700;letter-spacing:-0.015em}
 .snt{display:inline-block}
 .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -35,7 +36,7 @@ h1,h2,h3{text-wrap:balance}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
 .chip{font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green);border:1px solid color-mix(in srgb,var(--green) 40%,var(--line));border-radius:99px;padding:4px 11px}
 .chip.m{color:var(--dim);border-color:var(--line2)}
-.hero h1{font-size:clamp(36px,5.6vw,68px);line-height:1.02;letter-spacing:-.02em;max-width:980px}
+.hero h1{font-size:clamp(34px,4.8vw,60px);line-height:1.04;letter-spacing:-.035em;max-width:1120px}
 .hero .dek{font-size:clamp(17px,1.6vw,20px);color:var(--dim);max-width:760px;margin-top:18px}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:38px}
 .stats div{background:var(--card);padding:20px 22px}
@@ -55,9 +56,9 @@ article h3{font-size:19px;margin:22px 0 8px}
 article p{color:var(--dim);font-size:17px;margin-bottom:14px;max-width:720px}
 article p b,article li b{color:var(--fg)}
 article ul.plain{margin:6px 0 16px 20px;color:var(--dim);font-size:17px;display:grid;gap:8px;max-width:720px}
-.question{font:600 clamp(24px,3vw,34px)/1.2 "Space Grotesk",Inter,sans-serif;border-left:4px solid var(--green);padding:6px 0 6px 22px;margin:10px 0 22px;max-width:760px}
+.question{font:600 clamp(24px,3vw,34px)/1.2 Inter,system-ui,sans-serif;border-left:4px solid var(--green);padding:6px 0 6px 22px;margin:10px 0 22px;max-width:760px}
 .pq{margin:30px 0;padding:26px 28px;border-radius:18px;background:color-mix(in srgb,var(--green) 7%,var(--card));border:1px solid color-mix(in srgb,var(--green) 35%,var(--line))}
-.pq blockquote{font:500 clamp(19px,1.6vw,21px)/1.5 "Space Grotesk",Inter,sans-serif}
+.pq blockquote{font:500 clamp(19px,1.6vw,21px)/1.5 Inter,system-ui,sans-serif}
 .pq cite{display:block;margin-top:12px;font-style:normal;font-size:15px;color:var(--dim)}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:8px 0 10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
@@ -129,7 +130,7 @@ footer a{color:var(--dim);text-decoration:none}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .tile{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--card)}
 .tile .h{font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--mute)}
-.tile .v{font:700 52px/1 "Space Grotesk",Inter,sans-serif;margin:10px 0 6px}
+.tile .v{font:700 52px/1 Inter,system-ui,sans-serif;margin:10px 0 6px}
 .tile.bad{border-color:color-mix(in srgb,var(--amber) 50%,var(--line))}.tile.bad .v{color:var(--amber)}
 .tile.good{border-color:color-mix(in srgb,var(--green) 50%,var(--line))}.tile.good .v{color:var(--green)}
 .tile p{font-size:16px;color:var(--dim);margin:0}
@@ -137,13 +138,13 @@ footer a{color:var(--dim);text-decoration:none}
 .stack{display:grid;gap:7px}
 .stack span{display:block;border:1px dashed var(--line2);border-radius:10px;padding:8px 12px;font-size:16px;color:var(--dim);background:var(--card)}
 .stack span b{color:var(--fg)}
-.arrow{font:700 34px "Space Grotesk";color:var(--green)}
+.arrow{font:700 34px Inter;color:var(--green)}
 .one{border:1px solid color-mix(in srgb,var(--green) 55%,var(--line));background:color-mix(in srgb,var(--green) 8%,var(--card));border-radius:16px;padding:18px 20px}
-.one .t{font:700 20px "Space Grotesk",Inter,sans-serif;margin-bottom:8px}
+.one .t{font:700 20px Inter,system-ui,sans-serif;margin-bottom:8px}
 .one ul{margin-left:18px;color:var(--dim);font-size:16px;display:grid;gap:6px}
 .hub{display:grid;grid-template-columns:1fr auto 1.4fr;gap:16px;align-items:center}
 .hubc{border:1px solid color-mix(in srgb,var(--green) 55%,var(--line));border-radius:16px;padding:16px;text-align:center;background:color-mix(in srgb,var(--green) 8%,var(--card))}
-.hubc .t{font:700 18px "Space Grotesk",Inter,sans-serif}
+.hubc .t{font:700 18px Inter,system-ui,sans-serif}
 .hubc small{color:var(--dim);font-size:15px}
 .centers{display:grid;gap:8px}
 .ctr{display:flex;justify-content:space-between;gap:10px;border:1px solid var(--line);border-radius:11px;padding:9px 12px;font-size:15px;background:var(--card)}
